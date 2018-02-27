@@ -18,7 +18,7 @@ Select Your Trail
 <img src="{{ trail.imgMedium }}">
 {% endif %}
 
-<input type="hidden" value="{{ trail.id }}" name="trail_id"> 
+<input type="hidden" value="{{ trail.id }}" name="trail_id">
 <!-- passes trail id via URL  -->
 <input type="submit" value= 'I want to go to there!' name="chosen_trail">
 
@@ -54,9 +54,9 @@ Select Your Trail
 
       var trailsJSON = {{ selected_trails|tojson }}; //converting python list to js array!
       console.log(trailsJSON);
-      
 
-      let trailMarker, html; // adding marker as a variable in the namespace 
+
+      let trailMarker, html; // adding marker as a variable in the namespace
 
 
       for (let i = 0; i < trailsJSON.length; i += 1) {
@@ -107,9 +107,3 @@ Select Your Trail
 
 
   {% endblock %}
-
-
-
-
-
-
