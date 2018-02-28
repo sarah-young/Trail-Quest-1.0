@@ -229,7 +229,16 @@ def get_info_for_dirxns():
 	# STRETCHGOAL: Create a conditional & use the google maps geolocation API???
 	# return dirxns_json
 
+@app.route('/submit_review', methods=['POST'])
+def submit_trail_review():
+	"""Logic for submitting trail_reviews"""
 
+	review_text = request.form.get('review_text')
+	user_id = session['user_id']
+	trail_id = request.form.get('trail_id')
+	functions.add_review_to_db(review_text, user_id, trail_id)
+	
+	return "Success"
 
 # @app.route('/trails')
 # def display_selected_trails():

@@ -70,7 +70,8 @@ class Review(db.Model):
 	"""Reviews made by users"""
 
 	__tablename__ = "reviews"
-
+ 	# If lagging, look @ indexing trail_id and/or user_id
+	
 	review_id = db.Column(db.Integer, primary_key=True)
 	trail_id = db.Column(db.Integer, db.ForeignKey('trails.trail_id'))
 	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))

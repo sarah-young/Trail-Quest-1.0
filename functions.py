@@ -13,6 +13,17 @@ satellite_map_api_key =secrets.SATELLITE_MAP_GM_API_KEY
 
 #db = SQLAlchemy()
 
+def add_review_to_db(review_text, user_id, trail_id):
+	""" Add review from user to DB """
+
+	review_check = model.db.session.query(model.Review).filter(model.Review.user_id==user_id, model.Review.trail_id==trail_id).first()
+
+	if review_check == None:
+		review = model.Review(user_id = user_id,
+						  trail_id = trail_id,
+						  review_text = review_text)
+	else:
+		print "Review for this trail by user already in database."
 
 def add_trek_to_users_trails(id_of_trail):
 	"""Check to see if trek is already in user's trails.
