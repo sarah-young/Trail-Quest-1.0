@@ -22,6 +22,8 @@ def add_review_to_db(review_text, user_id, trail_id):
 		review = model.Review(user_id = user_id,
 						  trail_id = trail_id,
 						  review_text = review_text)
+		model.db.session.add(review)
+		model.db.session.commit()
 	else:
 		print "Review for this trail by user already in database."
 

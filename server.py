@@ -99,7 +99,7 @@ def render_homepage():
 	else:
 		flash("Please login to begin your adventure.")
 		return render_template('/welcome.html')
-		# This should be complete?
+
 
 @app.route('/trails_asychronous', methods=['POST'])
 def asynchronous_info_load():
@@ -194,40 +194,46 @@ def show_user_trails():
 
 	Stars will show up when user has marked trails as completed.
 	"""
-	all_user_treks = functions.get_all_user_treks()
-	if len(all_user_treks) == 0:
-		all_user_treks = 0
+	if session.get('user_id'):
+		all_user_treks = functions.get_all_user_treks()
+		if len(all_user_treks) == 0:
+			all_user_treks = 0
 
-	return render_template('/mytrails.html', all_user_treks=all_user_treks)
+		return render_template('/mytrails.html', all_user_treks=all_user_treks)
+	else:
+		flash("Please login to begin your adventure.")
+		return render_template('/welcome.html')
+
 
 
 @app.route('/trail/<trail_id>')
 def show_trail_info(trail_id):
 
+	# This one does not need a session.
 	trail = model.db.session.query(model.Trail).filter(model.Trail.trail_id==trail_id).first()
 
 	return render_template('/trail.html', trail=trail)
 
-
-@app.route('/dirxns', methods=['POST'])
-def get_info_for_dirxns():
-	"""Get dirxns from user inputted dirxns or geolocation"""
-
-	# get trail id from fields somehow
-	coordinates = request.form.get('trailhead_coordinates')
-	# print "COORDINATES:", coordinates
-	starting_address = request.form.get('startingaddress')
-	# print "STARTING ADDRESS: ", starting_address
-	starting_city = request.form.get('startingcity')
-	# print starting_city
-	starting_state = request.form.get('startingstate')
-	whole_address = starting_address + starting_city + starting_state
-	dirxn_json = functions.get_dirxns(whole_address, coordinates)
-	# print "JSON FROM Google Dirxns API call: ", dirxn_json
-	return 'BOOP'
-	# TBD on handling of this logic at this time...
-	# STRETCHGOAL: Create a conditional & use the google maps geolocation API???
-	# return dirxns_json
+#
+# @app.route('/dirxns', methods=['POST'])
+# def get_info_for_dirxns():
+# 	"""Get dirxns from user inputted dirxns or geolocation"""
+#
+# 	# get trail id from fields somehow
+# 	coordinates = request.form.get('trailhead_coordinates')
+# 	# print "COORDINATES:", coordinates
+# 	starting_address = request.form.get('startingaddress')
+# 	# print "STARTING ADDRESS: ", starting_address
+# 	starting_city = request.form.get('startingcity')
+# 	# print starting_city
+# 	starting_state = request.form.get('startingstate')
+# 	whole_address = starting_address + starting_city + starting_state
+# 	dirxn_json = functions.get_dirxns(whole_address, coordinates)
+# 	# print "JSON FROM Google Dirxns API call: ", dirxn_json
+# 	return 'BOOP'
+# 	# TBD on handling of this logic at this time...
+# 	# STRETCHGOAL: Create a conditional & use the google maps geolocation API???
+# 	# return dirxns_json
 
 @app.route('/submit_review', methods=['POST'])
 def submit_trail_review():
@@ -237,7 +243,7 @@ def submit_trail_review():
 	user_id = session['user_id']
 	trail_id = request.form.get('trail_id')
 	functions.add_review_to_db(review_text, user_id, trail_id)
-	
+
 	return "Success"
 
 # @app.route('/trails')
