@@ -99,9 +99,9 @@ class Trek(db.Model):
 	trek_date = db.Column(db.DateTime)
 	# trek_date would not be filled in until the trek is completed.
 
-	trails = db.relationship('Trail')
+	trail = db.relationship('Trail')
 	# trail relationship
-	users = db.relationship('User')
+	user = db.relationship('User')
 	# user relationship
 
 	def __repr__(self):

@@ -8,16 +8,19 @@
 
 </head>
 <body>
+  <h1>Trail Quest 🌲 ⛰️</h1>
 {% if session['user_id'] %}
 
     <form method="POST" action='/logout'>
     <button type="submit" name="userlogout" id="userlogout" value="logout">Logout</button>
     </form>
-
+    <a href="/mytrails">See My Trails</a>
+    <a href="/homepage">Homepage</a>
 
 {% endif %}
 
-    <h1>Trail Quest 🌲 ⛰️</h1>
+
+
 
     <ul>
   {% for message in get_flashed_messages() %}

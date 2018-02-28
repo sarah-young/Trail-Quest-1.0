@@ -56,7 +56,9 @@ def check_user_treks(id_of_trail):
 
 def extract_relevant_trail_info(trail_object):
 	"""Extract relevant trail info from trail object for use in
-	map on front end"""
+	map on front end
+
+	"""
 
 	trail = trail_object
 
