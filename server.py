@@ -175,7 +175,7 @@ def get_trail_id():
 	trail_id = request.form.get('chosentrail')
 	trek_add = functions.add_trek_to_users_trails(trail_id)
 	print "TREK ADD RESULT: ",trek_add
-	trail_conditions = functions.get_trail_conditions(trail_id)
+	# trail_conditions = functions.get_trail_conditions(trail_id)
 	# print trail_conditions
 	trail_object = functions.get_trail_object_by_id(trail_id)
 	trail_details = functions.extract_relevant_trail_info(trail_object)
@@ -234,6 +234,24 @@ def show_trail_info(trail_id):
 # 	# TBD on handling of this logic at this time...
 # 	# STRETCHGOAL: Create a conditional & use the google maps geolocation API???
 # 	# return dirxns_json
+
+@app.route('/directions', methods=['POST'])
+def make_google_maps_link():
+	"""Logic for creating Google Maps Directions link <3"""
+
+	origin = request.form.get('origin')
+	origin = origin.replace(',','')
+	origin = origin.split()
+	origin = "+".join(origin)
+	print 'ORIGIN: ', origin
+
+	destination = request.form.get('destination')
+	phone_number = request.form.get('phone_number')
+	print 'PHONE NUMBER: ', phone_number
+	print 'DESTINATION: ', destination
+	google_maps_url = "https://www.google.com/maps/dir/" + origin + "/" + destination
+
+	return google_maps_url
 
 @app.route('/submit_review', methods=['POST'])
 def submit_trail_review():

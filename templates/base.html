@@ -8,6 +8,13 @@
 
 </head>
 <body>
+
+  <ul>
+    {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %}
+  </ul>
+
   <h1>Trail Quest 🌲 ⛰️</h1>
 {% if session['user_id'] %}
 
@@ -19,14 +26,6 @@
 
 {% endif %}
 
-
-
-
-    <ul>
-  {% for message in get_flashed_messages() %}
-   <p>{{ message }}</p>
-  {% endfor %}
-</ul>
     {% block content %} {% endblock %}
 <footer>
 	Trail Quest Ⓒ 2018 Sarah Young

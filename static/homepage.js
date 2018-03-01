@@ -20,7 +20,7 @@ slider2.oninput = function() {
 } //end of slider value <span> number for trail length
 // REFERENCE: https://www.w3schools.com/howto/howto_js_rangeslider.asp
 
-$(document).on('click', '#getdirxns', getDirxns);
+// $(document).on('click', '#getdirxns', getDirxns);
 
 $(document).on('click', '#chosentrek', getTrek);
 // Because button does not exist when the page loads!!!
@@ -33,23 +33,10 @@ function getTrek(evt) {
   console.log($('#chosentrek').data('trailId'));
   $.post('/trek', {'chosentrail' : $('#chosentrek').data('trailId')}, function(result) {
       console.log(result);
-      showTrek(result);
+      // showTrek(result);
     })
-  // $.ajax({
-  //   url: "/trek",
-  //   type: "POST",
-  //   data: JSON.stringify({'chosentrail' : $('#chosentrek').data('trailId')}),
-  //   processData: false,
-  //   cache: true,
-  //   success: function(result) {
-  //     console.log(result);
-  //     showTrek(result);
-  //   }, //end of sucess input
-  //   error: function(error) {
-  //     console.log(error);
-  //   } //end of error input
-  // }); //end of AJAX element
 } //end of getTrek function
+
 
 function getTrails(evt) {
 			$.ajax({
@@ -87,55 +74,6 @@ function getTrails(evt) {
 			 }); // end of AJAX deets section
 		}; //end of function getTrails
 
-
-function initMap2(input) {
-  console.log(input);
-
-  let trailheadLat = input[0][0];
-  let trailheadLong = input[0][1];
-
-  let infoWindow = new google.maps.InfoWindow({
-    width: 150
-  });
-  let html;
-  let location = {lat: trailheadLat, lng: trailheadLong};
-  let map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 20,
-    center: location,
-    mapTypeId: 'satellite'
-    // mapTypeId: 'terrain'
-  }); // end of jQuery statement
-
-  // let marker = new google.maps.Marker({ //NOTE: Leaving this out for now. Only trailheadMarker is needed at this time.
-  //   position: location,
-  //   map: map
-  // }); // end of marker statement
-    // markerPlacement(input); NOTE: Does not seem to be needed.
-  let trailheadMarker; // adding marker as a variable in the namespace
-  trailheadMarker = new google.maps.Marker({
-  position: new google.maps.LatLng(trailheadLat, trailheadLong),
-  map: map,
-  title: 'Selected Trek',
-  icon: '/static/img/hikingIcon.png',
-  animation: google.maps.Animation.DROP,
-  });
-    // TODO: mock input, and then maybe test to see if the input name (i.e. input[j].name ) is in the text
-  html = ('<div class="window-content">' + '<br>'
-  + '<p><b>Trail name: </b>' + input[0][2] + '</p>' + '<p><b>Trail length: </b>'
-  + input[0][3] + '<b> Trail Difficulty:  </b>' + input[0][5] + '</p><p>'
-  + '<p><b>Trail description: </b>' + input[0][6] + '</p><img src=' + '"' + input[0][8]+'"/>'
-  + '<p> Starting Address: <input type="text" name="startingaddress" id="startingaddress" placeholder="Address" required>'
-  + '<br><input type="text" name="startingcity" id="startingcity" placeholder="City" required>'
-  + '<input type="text" name="startingstate" id="startingstate" placeholder="State" required>'
-  + '<button type="button" id="getdirxns" name="getdirxns">Get Directions to Trailhead</button >'
-  + '<input type="hidden" name="trailhead_coordinates" id="trailhead_coordinates" value="'
-  + input[0][0]+","+input[0][1] + '">' +'</div>');
-// TODO: Add button to get dirxns for trail
-
-
-  bindInfoWindow(trailheadMarker, map, infoWindow, html);
-  toggleBounce(trailheadMarker);
-} //end of initMap2 function
 
 
 function initMap(input) {
@@ -211,42 +149,8 @@ function bindInfoWindow(trailMarker, map, infoWindow, html) {
         });
 } //end of bindInfoWindow function
 
-function showTrek(result) {
-  console.log('IN SHOWTREK FUNCTION!');
-	console.log(result);
-
-  let trek_lat, trek_long;
-  trek_lat = result[0];
-  trek_long = result[1];
-  initMap2(result);
 
 
-} // end of showTrek function
-
-function getDirxns() {
-  console.log("getdirxns button working!!!");
-  if (document.getElementById("startingaddress").value === "") {
-    alert("Please enter a valid address.");
-    console.log('In alert function');
-
-  } // end of if statement
-  else {
-    console.log(document.getElementById("startingaddress").value);
-    console.log(document.getElementById("trailhead_coordinates").value);
-    $.post('/dirxns', {'startingaddress' : document.getElementById("startingaddress").value,
-                       'startingcity' : document.getElementById('startingcity').value,
-                       'startingstate': document.getElementById('startingstate').value,
-                       'trailhead_coordinates': document.getElementById("trailhead_coordinates").value },
-      function(result) {
-      console.log(result);
-      // TODO: put results in a function!
-      // if zero results...
-    }) //end of post statement
-
-  } //end of else statement
-
-
-} // end of getDirxns function
 
 	// =
 	// (("Trail Name: " + trailName + "<br>" + trailDifficulty + "<br>" + trailLength + "<br>" +
