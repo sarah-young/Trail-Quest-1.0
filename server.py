@@ -10,7 +10,11 @@ import model
 
 app = Flask(__name__)
 
+
+
 app.secret_key = "SECRETSECRETSECRET"
+
+
 
 ########### USER LOGIN & REGISTER LOGIC #######################
 
@@ -251,7 +255,7 @@ def make_google_maps_link():
 	print 'DESTINATION: ', destination
 	google_maps_url = "https://www.google.com/maps/dir/" + origin + "/" + destination
 
-	return google_maps_url
+	return "Success"
 
 @app.route('/submit_review', methods=['POST'])
 def submit_trail_review():
@@ -261,6 +265,7 @@ def submit_trail_review():
 	user_id = session['user_id']
 	trail_id = request.form.get('trail_id')
 	functions.add_review_to_db(review_text, user_id, trail_id)
+	functions.add_badge_if_applicable(trail_id)
 
 	return "Success"
 
@@ -287,7 +292,8 @@ def submit_trail_review():
 
 
 if __name__ == "__main__":
-    app.debug = True
-    DebugToolbarExtension(app)
-    connect_to_db(app)
-    app.run(host='0.0.0.0')
+	app.debug = True
+	DebugToolbarExtension(app)
+	connect_to_db(app)
+	# functions.load_badges()
+	app.run(host='0.0.0.0')

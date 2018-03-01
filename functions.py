@@ -13,6 +13,63 @@ satellite_map_api_key =secrets.SATELLITE_MAP_GM_API_KEY
 
 #db = SQLAlchemy()
 
+def load_badges():
+	"""Create badges"""
+
+	for i, row in enumerate(open("badge_seed_data.csv")):
+	    row = row.rstrip()
+	    badge_name, badge_description = row.split(",")
+
+	    badge = model.Badge(badge_name=badge_name,
+	                badge_description=badge_description)
+
+	    # We need to add to the session or it won't ever be stored
+	    model.db.session.add(badge)
+
+	    # provide some sense of progress
+	    if i % 100 == 0:
+	        print i
+
+	model.db.session.commit()
+	print "Completed."
+
+
+def add_badge_if_applicable(trail_id):
+	"""When review is posted, check to see if badge should be added to user page."""
+
+	trail = model.db.session.query(model.Trail).filter(model.Trail.trail_id==trail_id).first()
+
+	if 'waterfall' in trail.trail_description or 'water fall' in trail.trail_description:
+		# check if user has badge
+		# if they don't, add badge to merit table
+		print 'waterfall'
+	if 'creek' in trail.trail_description
+		print 'creek'
+	if "river" in trail.trail_description:
+		print 'river'
+	if "outlook" in trail.trail_description:
+		print 'outlook'
+	if int(trail.trail_high_alt) - int(trail.trail_low_alt) > 500:
+		print 'alititude'
+	if "redwood" in trail.trail_description:
+		print 'redwood'
+	if "wild flower" in trail.trail_description or "wildflower" in trail.trail_description:
+		print 'wild flower'
+	if "fern" in trail.trail_description:
+		print 'fern'
+	if "meadow" in trail.trail_description:
+		print 'meadow'
+	if "mountain" in trail.trail_description:
+		print 'mountain'
+	if "deer" in trail.trail_description:
+		print 'deer'
+	# if query for how many reviews have been submitted > 0:
+		# print first trek
+	# if query for how many reviews have been submitted > 4:
+		# print high five
+	# if quest for how many treks are in trek database for user > 0:
+		# print trailhead
+
 def add_review_to_db(review_text, user_id, trail_id):
 	""" Add review from user to DB """
 
