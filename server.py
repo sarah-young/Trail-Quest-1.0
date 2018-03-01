@@ -20,8 +20,14 @@ app.secret_key = "SECRETSECRETSECRET"
 
 @app.route('/welcome')
 def show_registration_page():
-	"""Show user registration form"""
-
+	"""Show user registration form
+	TODO:
+	First test: (define *who* & *action*)
+	> user enters /welcome url on browser
+	> text appears in user's browser (*expected result*)
+	>> look for trailquest, login, other expected words
+	> so that the user can login to application
+	"""
 	return render_template('/welcome.html')
 
 

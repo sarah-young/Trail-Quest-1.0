@@ -35,24 +35,67 @@ def load_badges():
 
 
 def add_badge_if_applicable(trail_id):
-	"""When review is posted, check to see if badge should be added to user page."""
+	"""
+	When review is posted, check to see if badge should be added to user page.
+	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+	badge_id = db.Column(db.Integer, db.ForeignKey('badges.badge_id'))
+	merit_date = db.Column(db.DateTime)
+
+	badges = db.relationship('Badge')
+	users = db.relationship('User')
+	"""
 
 	trail = model.db.session.query(model.Trail).filter(model.Trail.trail_id==trail_id).first()
-
+	badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
 	if 'waterfall' in trail.trail_description or 'water fall' in trail.trail_description:
-		# check if user has badge
-		# if they don't, add badge to merit table
-		print 'waterfall'
-	if 'creek' in trail.trail_description
-		print 'creek'
+		badge_name = "water fall badge"
+		b_o_c = badge_ownership_check
+		if badge_ownership_check == None:
+			merit = Merit(user_id = session['user_id'],
+						  badge_id = 1)
+			model.db.session.add(merit)
+			print 'waterfall'
+
+	if 'creek' in trail.trail_description:
+		badge_name = "creek_badge"
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		if badge_ownership_check == None:
+			merit = Merit(user_id = session['user_id'],
+						  badge_id = 2)
+			model.db.session.add(merit)
+
 	if "river" in trail.trail_description:
-		print 'river'
+		badge_name = "river badge"
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		if badge_ownership_check == None:
+			merit = Merit(user_id = session['user_id'],
+						  badge_id = 3)
+			model.db.session.add(merit)
+
 	if "outlook" in trail.trail_description:
-		print 'outlook'
+		badge_name = "outlook_badge"
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		if badge_ownership_check == None:
+			merit = Merit(user_id = session['user_id'],
+						  badge_id = 4)
+			model.db.session.add(merit)
+
 	if int(trail.trail_high_alt) - int(trail.trail_low_alt) > 500:
-		print 'alititude'
+		badge_name = "outlook_badge"
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		if badge_ownership_check == None:
+			merit = Merit(user_id = session['user_id'],
+						  badge_id = 5)
+			model.db.session.add(merit)
+
 	if "redwood" in trail.trail_description:
-		print 'redwood'
+		badge_name = "redwood badge"
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		if badge_ownership_check == None:
+			merit = Merit(user_id = session['user_id'],
+						  badge_id = 6)
+			model.db.session.add(merit)
+
 	if "wild flower" in trail.trail_description or "wildflower" in trail.trail_description:
 		print 'wild flower'
 	if "fern" in trail.trail_description:
