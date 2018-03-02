@@ -4,17 +4,15 @@ import functions
 from flask import Flask, redirect, request, render_template, session, url_for, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
+import send_sms
+import twilio
 
 from model import connect_to_db
 import model
 
 app = Flask(__name__)
 
-
-
 app.secret_key = "SECRETSECRETSECRET"
-
-
 
 ########### USER LOGIN & REGISTER LOGIC #######################
 
@@ -249,6 +247,7 @@ def show_trail_info(trail_id):
 def make_google_maps_link():
 	"""Logic for creating Google Maps Directions link <3"""
 
+	trail_name = request.form.get('trail_name')
 	origin = request.form.get('origin')
 	origin = origin.replace(',','')
 	origin = origin.split()
@@ -260,8 +259,10 @@ def make_google_maps_link():
 	print 'PHONE NUMBER: ', phone_number
 	print 'DESTINATION: ', destination
 	google_maps_url = "https://www.google.com/maps/dir/" + origin + "/" + destination
+	body = "Trail Quest Google Map Link to " + trail_name + ": " + google_maps_url
+	send_sms.send_message(phone_number, body)
 
-	return "Success"
+	return "User sent link."
 
 @app.route('/submit_review', methods=['POST'])
 def submit_trail_review():
