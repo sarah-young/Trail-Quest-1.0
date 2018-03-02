@@ -219,11 +219,14 @@ def show_trail_info(trail_id):
 	# This one does not need a session.
 	trail = model.db.session.query(model.Trail).filter(model.Trail.trail_id==trail_id).first()
 	all_users_trails = model.db.session.query(model.Trek).filter(model.Trek.user_id==session['user_id']).all()
-	for trek in all_users_trails:
-		if trek.trail_id == trail.trail_id:
-			in_my_trails = True
-		else:
-			in_my_trails = False
+	if all_users_trails:
+		for trek in all_users_trails:
+			if trek.trail_id == trail.trail_id:
+				in_my_trails = True
+			else:
+				in_my_trails = False
+	else:
+		in_my_trails = False
 
 	return render_template('/trail.html', trail=trail, in_my_trails = in_my_trails)
 
