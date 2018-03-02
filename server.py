@@ -206,6 +206,8 @@ def show_user_trails():
 		all_user_treks = functions.get_all_user_treks()
 		if len(all_user_treks) == 0:
 			all_user_treks = 0
+		else:
+			all_user_treks.reverse()	
 
 		return render_template('/mytrails.html', all_user_treks=all_user_treks)
 	else:
