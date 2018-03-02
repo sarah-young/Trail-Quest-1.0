@@ -11,6 +11,36 @@ hp_api_key = secrets.HIKING_PROJECT_API_KEY
 
 #db = SQLAlchemy()
 
+def find_uncompleted_trails():
+	"""Find completed trails"""
+
+	print "**IN UNCOMPLETED TRAILS FUNC***"
+	# SET MATH
+	# use session to get user_id
+	# query to find all user's trails
+	all_users_trails = model.db.session.query(model.Trek).filter(model.Trek.user_id==session['user_id']).all()
+	# guery to find all user's reviews
+	all_users_reviews = model.db.session.query(model.Review).filter(model.Review.user_id==session['user_id']).all()
+	# loop through each list & extract trail ids
+	# ids_from_trail_lst = []
+	# for trail in all_users_trails:
+	# 	ids_from_trail_lst.append(trail.trail_id)
+	# trail_lst_set = set(ids_from_trail_lst)
+	#
+	# ids_from_trail_rvws =[]
+	# for trail in all_users_reviews:
+	# 	ids_from_trail_rvws.append(trail.trail_id)
+	# completed_trails_set = set(ids_from_trail_rvws)
+
+	users_trail_set = set(all_users_trails)
+	users_reviews_set = set(all_users_reviews)
+
+	uncompleted_trails = users_trail_set - users_reviews_set
+	print "***TRAILS LEFTOVER***", uncompleted_trails
+	remaining_trails = list(uncompleted_trails)
+	return [remaining_trails, all_users_reviews]
+
+
 def load_badges():
 	"""Create badges"""
 
@@ -274,6 +304,11 @@ def find_lat_lng(city, state):
 	Information passed from HTML form to this function.
 
 	"""
+	if city == "":
+		return "Missing city"
+	if state == "":
+		return "Missing state"
+
 	try:
 		geocode_request = requests.get("https://maps.googleapis.com/maps/api/geocode/json?address="+city+","+state+"US&key=AIzaSyCNFFFQco261DBnttijOE0NL_mAx6Mz86g")
 		json_geocode = geocode_request.json()

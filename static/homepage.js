@@ -21,12 +21,12 @@ slider2.oninput = function() {
 // REFERENCE: https://www.w3schools.com/howto/howto_js_rangeslider.asp
 
 // $(document).on('click', '#getdirxns', getDirxns);
-
 $(document).on('click', '#chosentrek', getTrek);
 // Because button does not exist when the page loads!!!
 
 $('#asynchronousClick').on('click', getTrails); // Trail Selector
 // When button clicked, trail selected and more information displayed.
+
 
 function getTrek(evt) {
   console.log("***In getTrek function!***");
@@ -111,7 +111,8 @@ function initMap(input) {
               '<p><b>Trail description: </b>' + input[j].summary + '</p>' + '<p>' +
               '<p><b>Trail length: </b>' + input[j].length +'</p><p>'+
               '<button type="button" id="chosentrek" name="chosentrek" data-trail-id='
-              + input[j].id +'>Add trail to My Trails</button >' + '</div>');
+              + input[j].id +'>Add trail to My Trails</button><a href="/trail/'+input[j].id+'"><button>See More Detail</button></a></div>');
+
 			bindInfoWindow(trailMarker, map, infoWindow, html);
 		} // end of trailMarker for loop
 		// let circle = new google.maps.Circle({ // circle for user chosen radius on map

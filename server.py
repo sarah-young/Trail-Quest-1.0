@@ -188,7 +188,7 @@ def get_trail_id():
 	trail_object = functions.get_trail_object_by_id(trail_id)
 	trail_details = functions.extract_relevant_trail_info(trail_object)
 
-	trail_deets = [trail_details, trail_conditions]
+	trail_deets = [trail_details]
 	print "TRAIL DEETS: ", trail_deets
 
 	return jsonify(trail_deets)
@@ -203,17 +203,14 @@ def show_user_trails():
 	Stars will show up when user has marked trails as completed.
 	"""
 	if session.get('user_id'):
-		all_user_treks = functions.get_all_user_treks()
-		if len(all_user_treks) == 0:
-			all_user_treks = 0
-		else:
-			all_user_treks.reverse()	
+		remaining_trails, completed_trails = functions.find_uncompleted_trails()
+		if len(remaining_trails) == 0:
+			remaining_trails = 0
 
-		return render_template('/mytrails.html', all_user_treks=all_user_treks)
+		return render_template('/mytrails.html', remaining_trails=remaining_trails, completed_trails=completed_trails)
 	else:
 		flash("Please login to begin your adventure.")
 		return render_template('/welcome.html')
-
 
 
 @app.route('/trail/<trail_id>')
