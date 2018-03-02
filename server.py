@@ -220,7 +220,7 @@ def show_trail_info(trail_id):
 	trail = model.db.session.query(model.Trail).filter(model.Trail.trail_id==trail_id).first()
 	all_users_trails = model.db.session.query(model.Trek).filter(model.Trek.user_id==session['user_id']).all()
 	for trek in all_users_trails:
-		if trail.trail_id == trek.trail_id:
+		if trek.trail_id == trail.trail_id:
 			in_my_trails = True
 		else:
 			in_my_trails = False
