@@ -7,6 +7,8 @@ import model
 #from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, session
 
+hp_api_key = secrets.HIKING_PROJECT_API_KEY
+
 #db = SQLAlchemy()
 
 def load_badges():
@@ -273,15 +275,14 @@ def find_lat_lng(city, state):
 
 	"""
 	try:
-		geocode_request = requests.get("https://maps.googleapis.com/maps/api/geocode/json?address="+city+","+state+"US&key="+gm_api_key)
+		geocode_request = requests.get("https://maps.googleapis.com/maps/api/geocode/json?address="+city+","+state+"US&key=AIzaSyCNFFFQco261DBnttijOE0NL_mAx6Mz86g")
 		json_geocode = geocode_request.json()
 		lat,lng = json_geocode['results'][0].get('geometry').get('location').values()
 		coordinates = (str(lat),str(lng),)
-
+		print coordinates
 		return coordinates
 
 	except:
-
 		return None
 
 def check_user_credentials(username, password):
