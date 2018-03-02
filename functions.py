@@ -22,23 +22,29 @@ def find_uncompleted_trails():
 	# guery to find all user's reviews
 	all_users_reviews = model.db.session.query(model.Review).filter(model.Review.user_id==session['user_id']).all()
 	# loop through each list & extract trail ids
-	# ids_from_trail_lst = []
-	# for trail in all_users_trails:
-	# 	ids_from_trail_lst.append(trail.trail_id)
-	# trail_lst_set = set(ids_from_trail_lst)
-	#
-	# ids_from_trail_rvws =[]
-	# for trail in all_users_reviews:
-	# 	ids_from_trail_rvws.append(trail.trail_id)
-	# completed_trails_set = set(ids_from_trail_rvws)
+	ids_from_trail_lst = []
+	for trail in all_users_trails:
+		ids_from_trail_lst.append(trail.trail_id)
+	trail_lst_set = set(ids_from_trail_lst)
 
-	users_trail_set = set(all_users_trails)
-	users_reviews_set = set(all_users_reviews)
+	ids_from_trail_rvws =[]
+	for trail in all_users_reviews:
+		ids_from_trail_rvws.append(trail.trail_id)
+	completed_trails_set = set(ids_from_trail_rvws)
 
-	uncompleted_trails = users_trail_set - users_reviews_set
-	print "***TRAILS LEFTOVER***", uncompleted_trails
-	remaining_trails = list(uncompleted_trails)
-	return [remaining_trails, all_users_reviews]
+	uncompleted_trails = set(ids_from_trail_lst) - set(ids_from_trail_rvws)
+
+	# completed_trail_ob_lst = []
+	# for c_trail in completed_trails_set:
+	# 	trail_object = model.db.session.query(model.Trail).filter(model.Trail.trail_id==c_trail).first()
+	# 	completed_trail_ob_lst.append(trail_object)
+
+	uncompleted_trail_ob_lst = []
+	for uc_trail in uncompleted_trails:
+		trail_object = model.db.session.query(model.Trail).filter(model.Trail.trail_id==uc_trail).first()
+		uncompleted_trail_ob_lst.append(trail_object)
+
+	return [uncompleted_trail_ob_lst, all_users_reviews]
 
 
 def load_badges():

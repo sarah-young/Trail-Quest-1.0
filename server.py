@@ -178,7 +178,7 @@ def asynchronous_info_load():
 @app.route('/trek', methods=['POST'])
 def get_trail_id():
 	"""Bring trail id of chosen trail to the back end for processing.
-	Return trail deets from trail object, conditions.
+	Return trail deets from trail object.
 	"""
 	trail_id = request.form.get('chosentrail')
 	trek_add = functions.add_trek_to_users_trails(trail_id)
@@ -218,8 +218,14 @@ def show_trail_info(trail_id):
 
 	# This one does not need a session.
 	trail = model.db.session.query(model.Trail).filter(model.Trail.trail_id==trail_id).first()
+	all_users_trails = model.db.session.query(model.Trek).filter(model.Trek.user_id==session['user_id']).all()
+	for trek in all_users_trails:
+		if trail.trail_id == trek.trail_id:
+			in_my_trails = True
+		else:
+			in_my_trails = False
 
-	return render_template('/trail.html', trail=trail)
+	return render_template('/trail.html', trail=trail, in_my_trails = in_my_trails)
 
 #
 # @app.route('/dirxns', methods=['POST'])
