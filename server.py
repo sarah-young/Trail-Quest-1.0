@@ -16,6 +16,22 @@ app.secret_key = "SECRETSECRETSECRET"
 
 ########### USER LOGIN & REGISTER LOGIC #######################
 
+@app.route('/remove_trail', methods =['POST'])
+def trail_removal_route():
+	"""
+	SQLAlchemy query allowing user to remove trail from their trail list.
+	"""
+	t_id = request.form.get('trail_id')
+	trail_to_remove = model.Trek.query.filter_by(user_id=session['user_id'], trail_id=t_id).delete()
+	model.db.session.commit()
+	# Trek is the table holding user trails.
+	# Finding correct trek object via user_id in session & trail_id passed from the front end.
+	# TODO: Add button to front end to remove trails.
+	# TODO: Add similar route for removing reviews?
+
+	return "Success"
+
+
 @app.route('/welcome')
 def show_registration_page():
 	"""Show user registration form
@@ -222,9 +238,9 @@ def show_trail_info(trail_id):
 	if all_users_trails:
 		for trek in all_users_trails:
 			if trek.trail_id == trail.trail_id:
-				in_my_trails = True
+				in_my_trails = []
 			else:
-				in_my_trails = False
+				in_my_trails = [" "]
 	else:
 		in_my_trails = False
 
