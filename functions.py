@@ -157,7 +157,7 @@ def add_badge_if_applicable(t_id):
 						  badge_id = 9)
 			model.db.session.add(meadow_merit)
 
-	if "mountain" in trail.trail_description:
+	if "mountain" in trail.trail_description or "Mountain" in trail.trail_description:
 		b_id = 10
 		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:

@@ -223,7 +223,12 @@ def show_user_trails():
 		if len(remaining_trails) == 0:
 			remaining_trails = 0
 
-		return render_template('/mytrails.html', remaining_trails=remaining_trails, completed_trails=completed_trails)
+		merit_list = model.db.session.query(model.Merit).filter(model.Merit.user_id==session['user_id']).all()
+		print merit_list
+
+		return render_template('/mytrails.html', remaining_trails=remaining_trails,
+												 completed_trails=completed_trails,
+												 merit_list=merit_list)
 	else:
 		flash("Please login to begin your adventure.")
 		return render_template('/welcome.html')
