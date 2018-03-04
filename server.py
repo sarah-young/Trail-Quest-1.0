@@ -170,7 +170,7 @@ def asynchronous_info_load():
 
 	# print "TRAILS AFTER DIFFICULTY FILTER: ", trails
 
- 	selected_trails = functions.select_three_trails(trails_d)
+ 	selected_trails = functions.select_trails(trails_d)
 		# If selected trails == none, send back STRING which triggers different
 		# in JavaScript
 	lat, lng = coordinates

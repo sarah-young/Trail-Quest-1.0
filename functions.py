@@ -361,7 +361,7 @@ def find_trails(coordinates, radius='25'):
 	return trails
 
 
-def select_three_trails(trails):
+def select_trails(trails):
 	"""Selects three random trails from trail_packet from find_trails
 
 	"""
@@ -463,7 +463,7 @@ def get_trail_conditions(trail_id):
 def filter_trek_length(trails, trek_length):
 	"""Take trail list-object & filter for trails by trek length
 
-	Called in select_three_trails()"""
+	Called in select_trails()"""
 
 	trail_list = []
 
@@ -479,7 +479,7 @@ def filter_trek_length(trails, trek_length):
 def filter_trek_difficulty(trails_filtered_by_length, trail_difficulty):
 	"""Take trail list-object & filter trails by difficulty
 
-	Called in select_three_trails()"""
+	Called in select_trails()"""
 
 
 	if trail_difficulty == "no-preference":
