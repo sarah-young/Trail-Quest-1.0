@@ -246,26 +246,6 @@ def show_trail_info(trail_id):
 
 	return render_template('/trail.html', trail=trail, in_my_trails = in_my_trails)
 
-#
-# @app.route('/dirxns', methods=['POST'])
-# def get_info_for_dirxns():
-# 	"""Get dirxns from user inputted dirxns or geolocation"""
-#
-# 	# get trail id from fields somehow
-# 	coordinates = request.form.get('trailhead_coordinates')
-# 	# print "COORDINATES:", coordinates
-# 	starting_address = request.form.get('startingaddress')
-# 	# print "STARTING ADDRESS: ", starting_address
-# 	starting_city = request.form.get('startingcity')
-# 	# print starting_city
-# 	starting_state = request.form.get('startingstate')
-# 	whole_address = starting_address + starting_city + starting_state
-# 	dirxn_json = functions.get_dirxns(whole_address, coordinates)
-# 	# print "JSON FROM Google Dirxns API call: ", dirxn_json
-# 	return 'BOOP'
-# 	# TBD on handling of this logic at this time...
-# 	# STRETCHGOAL: Create a conditional & use the google maps geolocation API???
-# 	# return dirxns_json
 
 @app.route('/directions', methods=['POST'])
 def make_google_maps_link():
@@ -288,6 +268,7 @@ def make_google_maps_link():
 
 	return "User sent link."
 
+
 @app.route('/submit_review', methods=['POST'])
 def submit_trail_review():
 	"""Logic for submitting trail_reviews"""
@@ -299,27 +280,6 @@ def submit_trail_review():
 	functions.add_badge_if_applicable(trail_id)
 
 	return "Success"
-
-# @app.route('/trails')
-# def display_selected_trails():
-# 	"""Display trails selected by select_three_trails"""
-#
-# 	selected_trails = session['selected_trails']
-# 	print "SELECTED TRAILS: ", selected_trails
-# 	city, state = session['location']
-# 	print "CITY/STATE: ", city, state
-#
-# 	google_maps_api_key = secrets.SATELLITE_MAP_GM_API_KEY
-#
-# 	coordinates = session['coordinates'] # lat / long from Google Maps API call
-# 	lat, lng = coordinates
-# 	city_latitude = float(lat)
-# 	city_longitude = float(lng)
-# 	radius_in_meters = session['radius']
-# 	# this isn't needed anymore? Or is it??? Maybe this is easier than sending stuff back and forth??? Keep this for now..
-#
-# 	return render_template('/trails.html', selected_trails=selected_trails, city=city, state=state, api_key=google_maps_api_key, city_latitude=lat, city_longitude=lng, radius=radius_in_meters)
-# 	# passing selected_trails list, city, state, api key for google maps, and lat/long for map
 
 
 if __name__ == "__main__":

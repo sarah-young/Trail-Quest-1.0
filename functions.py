@@ -68,7 +68,7 @@ def load_badges():
 	print "Completed."
 
 
-def add_badge_if_applicable(trail_id):
+def add_badge_if_applicable(t_id):
 	"""
 	When review is posted, check to see if badge should be added to user page.
 	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
@@ -81,124 +81,125 @@ def add_badge_if_applicable(trail_id):
 	# Run query for all badges that are owned by a user
 	# Run only queries for badges that the user doesn't have
 
-	trail = model.db.session.query(model.Trail).filter(model.Trail.trail_id==trail_id).first()
+	trail = model.db.session.query(model.Trail).filter(model.Trail.trail_id==t_id).first()
 	print trail
 	if 'waterfall' in trail.trail_description or 'water fall' in trail.trail_description:
-		badge_name = "water fall badge"
-		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		b_id = 1
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:
-			waterfall_merit = Merit(user_id = session['user_id'],
-						  badge_id = 1)
+			waterfall_merit = model.Merit(user_id = session['user_id'],
+						  				  badge_id = 1)
 			model.db.session.add(waterfall_merit)
 			print 'waterfall'
 
 	if 'creek' in trail.trail_description:
-		badge_name = "creek_badge"
-		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		b_id = 2
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:
-			creek_merit = Merit(user_id = session['user_id'],
+			creek_merit = model.Merit(user_id = session['user_id'],
 						  badge_id = 2)
 			model.db.session.add(creek_merit)
 
 	if "river" in trail.trail_description:
-		badge_name = "river badge"
-		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		b_id = 3
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:
-			river_merit = Merit(user_id = session['user_id'],
+			river_merit = model.Merit(user_id = session['user_id'],
 						  badge_id = 3)
 			model.db.session.add(river_merit)
 
 	if "outlook" in trail.trail_description:
-		badge_name = "outlook_badge"
-		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		b_id = 4
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:
-			outlook_merit = Merit(user_id = session['user_id'],
+			outlook_merit = model.Merit(user_id = session['user_id'],
 						  badge_id = 4)
 			model.db.session.add(outlook_merit)
 
 	if int(trail.trail_high_alt) - int(trail.trail_low_alt) > 500:
-		badge_name = "outlook_badge"
-		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		b_id = 5
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:
-			altitude_merit = Merit(user_id = session['user_id'],
+			altitude_merit = model.Merit(user_id = session['user_id'],
 						  badge_id = 5)
 			model.db.session.add(altitude_merit)
 
 	if "redwood" in trail.trail_description or "redwoods" in trail.trail_description:
-		badge_name = "redwood badge"
-		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		b_id = 6
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:
-			redwood_merit = Merit(user_id = session['user_id'],
+			redwood_merit = model.Merit(user_id = session['user_id'],
 						  badge_id = 6)
 			model.db.session.add(redwood_merit)
 			print "***REDWOOD BADGE ACQUIRED!***"
 
 	if "fern" in trail.trail_description:
-		badge_name = "fern badge"
-		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		b_id = 7
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:
-			fern_merit = Merit(user_id = session['user_id'],
+			fern_merit = model.Merit(user_id = session['user_id'],
 						  badge_id = 7)
 			model.db.session.add(fern_merit)
 
 	if "wild flower" in trail.trail_description or "wildflower" in trail.trail_description:
-		badge_name = "wild flower badge"
-		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		b_id = 8
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:
-			wildflower_merit = Merit(user_id = session['user_id'],
+			wildflower_merit = model.Merit(user_id = session['user_id'],
 						  badge_id = 8)
 			model.db.session.add(wildflower_merit)
 
 	if "meadow" in trail.trail_description:
-		badge_name = "meadow badge"
-		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		b_id = 9
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:
-			meadow_merit = Merit(user_id = session['user_id'],
+			meadow_merit = model.Merit(user_id = session['user_id'],
 						  badge_id = 9)
 			model.db.session.add(meadow_merit)
 
 	if "mountain" in trail.trail_description:
-		badge_name = "mountain badge"
-		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		b_id = 10
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:
-			mountain_merit = Merit(user_id = session['user_id'],
+			mountain_merit = model.Merit(user_id = session['user_id'],
 						  badge_id = 10)
 			model.db.session.add(mountain_merit)
 
 	if "deer" in trail.trail_description:
-		badge_name = "deer badge"
-		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badges.badge_name==badge_name, model.Merit.users.user_id==session['user_id']).first()
+		b_id = 11
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
 		if badge_ownership_check == None:
-			merit = Merit(user_id = session['user_id'],
+			merit = model.Merit(user_id = session['user_id'],
 						  badge_id  = 11)
 			model.db.session.add(merit)
 
 	trek_check = model.db.session.query(model.Trek).filter(model.Trek.user_id==session['user_id']).all()
 	if len(trek_check) > 0:
-		trailhead_merit = Merit(user_id = session['user_id'],
+		trailhead_merit = model.Merit(user_id = session['user_id'],
 					            badge_id = 14)
 		model.db.session.add(trailhead_merit)
 
 	review_check = model.db.session.query(model.Review).filter(model.Review.user_id==session['user_id']).all()
 	if len(review_check) > 0:
-		first_trek_merit = Merit(user_id = session['user_id'],
+		first_trek_merit = model.Merit(user_id = session['user_id'],
 					  badge_id = 12)
 		model.db.session.add(first_trek_merit)
 
 	if len(review_check) > 4:
-		high_5_merit = Merit(user_id = session['user_id'],
+		high_5_merit = model.Merit(user_id = session['user_id'],
 				      badge_id = 13)
 		model.db.session.add(high_5_merit)
 
+	model.db.session.commit()
 
-def add_review_to_db(review_text, user_id, trail_id):
+def add_review_to_db(review_text, user_id, t_id):
 	""" Add review from user to DB """
 
-	review_check = model.db.session.query(model.Review).filter(model.Review.user_id==user_id, model.Review.trail_id==trail_id).first()
+	review_check = model.db.session.query(model.Review).filter(model.Review.user_id==user_id, model.Review.trail_id==t_id).first()
 
 	if review_check == None:
 		review = model.Review(user_id = user_id,
-						  trail_id = trail_id,
+						  trail_id = t_id,
 						  review_text = review_text)
 		model.db.session.add(review)
 		model.db.session.commit()
@@ -275,10 +276,10 @@ def get_dirxns(starting_address, trail_coordinates):
 	return dirxns
 
 
-def get_trail_object_by_id(trail_id):
+def get_trail_object_by_id(t_id):
 	"""Query database for trail object by trail id."""
 
-	trail_object = model.db.session.query(model.Trail).filter(model.Trail.trail_id==trail_id).first()
+	trail_object = model.db.session.query(model.Trail).filter(model.Trail.trail_id==t_id).first()
 	if trail_id:
 		return trail_object
 

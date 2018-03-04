@@ -93,7 +93,6 @@ function initMap(input) {
 	    position: location,
 	    map: map
 		}); // end of marker statement
-			// markerPlacement(input);
 		let trailMarker; // adding marker as a variable in the namespace
 
 		for (let j = 0; j < input.length; j += 1) {
@@ -115,13 +114,6 @@ function initMap(input) {
 
 			bindInfoWindow(trailMarker, map, infoWindow, html);
 		} // end of trailMarker for loop
-		// let circle = new google.maps.Circle({ // circle for user chosen radius on map
-		// 	map: map,
-		// 	radius: input[0].radius_in_meters,
-		// 	fillColor: '#b394d1',
-		// 	strokeWeight: .1
-		// }); // end of circle statement
-		// circle.bindTo('center', marker, 'position');
 		drop(input);
 		toggleBounce(trailMarker);
 } //end of initMap function
