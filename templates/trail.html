@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}
+Trail Details
+{% endblock %}
+{% block content %}
+
+<h2>Trail Detail</h2>
+<div id="trail-details">
+Trail Name: {{ trail.trail_name }}<br>
+Trail Length: {{ trail.trail_length }}<br>
+Trail Description: {{ trail.trail_description }} <br>
+Trail Difficulty: {{ trail.trail_difficulty }} <br>
+Highest Altitude: {{ trail.trail_high_alt }} Lowest Altitude: {{ trail.trail_low_alt }} <br>
+<input type="hidden" id="trailheadlat" value="{{ trail.trailhead_latitude }}">
+<input type="hidden" id="trailheadlong" value="{{ trail.trailhead_longitude }}">
+<input type="hidden" id="trailid" value="{{ trail.trail_id }}">
+<input type="hidden" id="trail_name" value="{{ trail.trail_name }}">
+</div>
+<div id="trail-picture">
+<img src="{{ trail.trail_picture }}">
+<!-- TODO: Trail picture will be to side -->
+</div>
+
+{% for thing in in_my_trails %}
+  <button type="button" id="trailid-add" name="add-to-my-trails" onclick="this.style.visibility='hidden'">Add to My Trails</button>
+{% endfor %}
+
+<div id="map"></div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT4L9G5iunkBWCBwqqm6Qdt7-0hG34L6Y">
+</script>
+<script src="../static/trail.js" type="text/javascript"></script>
+{% endblock %}
