@@ -70,8 +70,10 @@ $(document).on('click', '#trailid-add', function() {
 
   function(result) {
     console.log(result);
-  })
-});
+  }) // End of post statement
+  let addedTrail = document.getElementById("add-to-trails-button");
+  addedTrail.innerHTML = "Trail added!"
+}); // End of onclick function
 
 $(document).on('click', '#getdirxns', function(){
   let lat = document.getElementById('trailheadlat').value

@@ -19,11 +19,11 @@ Trail Details
 <img src="{{ trail.trail_picture }}">
 <!-- TODO: Trail picture will be to side -->
 </div>
-
+<div id="add-to-trails-button">
 {% for thing in in_my_trails %}
-  <button type="button" id="trailid-add" name="add-to-my-trails" onclick="this.style.visibility='hidden'">Add to My Trails</button>
+  <button type="button" id="trailid-add" name="add-to-my-trails">Add to My Trails</button>
 {% endfor %}
-
+</div>
 <div id="map"></div>
 
 

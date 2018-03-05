@@ -145,13 +145,14 @@ def asynchronous_info_load():
 	# ***Google Map API gets called here!***
 	print "COORDINATES: ", coordinates
 
+	if coordinates == None:
+		print "!!!LOCATION OR RANGE ERROR!!!"
+		return "FOO"
+		
 	trek_length = int(trek_length)
 
 	radius_to_meters = int(radius) * 1609.34
 
-	if coordinates == None:
-		print "!!!LOCATION OR RANGE ERROR!!!"
-		return "FOO"
 
 	trails = functions.find_trails(coordinates, radius)
 	# ***Hiking API gets called here!***
@@ -187,7 +188,7 @@ def asynchronous_info_load():
 	user_reviews = model.db.session.query(model.Review).filter(model.Review.user_id==session['user_id']).all()
 	# TODO: Looks for completed trails and trails in user's database...
 	# TODO: See if you can make this information display on front end...
-	
+
 
 	# ids_from_reviews = set()
 	# for review in user_reviews:

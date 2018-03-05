@@ -306,9 +306,11 @@ def find_lat_lng(city, state):
 
 	"""
 	if city == "":
-		return "Missing city"
+		print "Missing city"
+		return None
 	if state == "":
-		return "Missing state"
+		print "Missing state"
+		return None
 
 	try:
 		geocode_request = requests.get("https://maps.googleapis.com/maps/api/geocode/json?address="+city+","+state+",US&key=AIzaSyCNFFFQco261DBnttijOE0NL_mAx6Mz86g")

@@ -32,18 +32,18 @@ function getTrek(evt) {
   console.log($('#chosentrek').data('trailId'));
   $.post('/trek', {'chosentrail' : $('#chosentrek').data('trailId')}, function(result) {
       console.log(result);
-      // showTrek(result);
+
     })
 } //end of getTrek function
 
 
 function getTrails(evt) {
+      console.log($('#trailSelector').serialize());
 			$.ajax({
 				url: "/trails_asychronous",
 				type: "POST",
 				data: $('#trailSelector').serialize(),
 				processData: false,
-				cache: true,
 				success: function(response) {
 					if (response === "FOO") {
 						console.log('COORDINATES ERROR');
@@ -141,11 +141,3 @@ function bindInfoWindow(trailMarker, map, infoWindow, html) {
             infoWindow.open(map, trailMarker);
         });
 } //end of bindInfoWindow function
-
-
-
-
-	// =
-	// (("Trail Name: " + trailName + "<br>" + trailDifficulty + "<br>" + trailLength + "<br>" +
-	// 	trailDetails + "<br>" + "<img src=" + trailPicture+ ">"))
-	// 	// look at trek info in server.py

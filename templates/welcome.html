@@ -6,7 +6,7 @@ Welcome
 {% block content %}
 <h3>Register for Trail Quest </h3>
 <h4>Your adventure begins here.</h4>
-
+<div class="welcome-page-blox">
 <form method="POST" action="/register">
   Email: <input type="email" placeholder="Email" name="username" id="username" required><br>
   Password: <input type="password" placeholder="Password" name="password"
@@ -16,24 +16,19 @@ Welcome
   <br>
   <button type="submit" name="register" id="register" value="register">Register</button>
 </form>
-
-
-<div id="message">
-  <p>Password must contain the following:</p>
-  <p id="letter" class="invalid">A lowercase letter</p>
-  <p id="capital" class="invalid">A capital (uppercase) letter</p>
-  <p id="number" class="invalid">A number</p>
-  <p id="length" class="invalid">Minimum 8 characters</p>
 </div>
 
-<h3>Already a user? Login here.</p>
+
+
+<div class="welcome-page-blox">
+<h3>Already a user? Login here.</p></h3>
   <form method="POST" action="/login">
     Email: <input type="email" placeholder="Email" name="loginemail" id="loginemail" required><br>
     Password: <input type="password" placeholder="Password" name="loginpassword"
     id="loginpassword" required><br>
     <button type="submit" name="login" id="login" value="login">Login</button>
   </form>
-
+</div>
 
 
 <script src="../static/welcome.js" type="text/javascript"></script>
