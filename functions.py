@@ -280,7 +280,7 @@ def get_trail_object_by_id(t_id):
 	"""Query database for trail object by trail id."""
 
 	trail_object = model.db.session.query(model.Trail).filter(model.Trail.trail_id==t_id).first()
-	if trail_id:
+	if t_id:
 		return trail_object
 
 	else:

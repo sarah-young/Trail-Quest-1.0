@@ -109,8 +109,8 @@ function initMap(input) {
               '<p><b>Trail description: </b>' + input[j].summary + '</p>' + '<p>' +
               '<p><b>Trail length: </b>' + input[j].length +'</p><p>'+
               '<button type="button" id="chosentrek" name="chosentrek" data-trail-id='
-              + input[j].id +' >Add trail to My Trails</button><form action="/trail/'
-              +input[j].id+'" method="get" id="get-more-details"></form><button type="submit" form="get-more-details" value="Submit">See More Detail</button></div>');
+              + input[j].id +' >Add to My Trails</button><form action="/trail/'
+              +input[j].id+'" method="get" id="get-more-details"></form><button type="submit" form="get-more-details" value="Submit">More Details</button></div>');
 
 			bindInfoWindow(trailMarker, map, infoWindow, html);
 		} // end of trailMarker for loop

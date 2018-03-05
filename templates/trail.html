@@ -4,13 +4,12 @@ Trail Details
 {% endblock %}
 {% block content %}
 
-<h2>Trail Detail</h2>
+
 <div id="trail-details">
-Trail Name: {{ trail.trail_name }}<br>
-Trail Length: {{ trail.trail_length }}<br>
-Trail Description: {{ trail.trail_description }} <br>
-Trail Difficulty: {{ trail.trail_difficulty }} <br>
-Highest Altitude: {{ trail.trail_high_alt }} Lowest Altitude: {{ trail.trail_low_alt }} <br>
+<h2>{{ trail.trail_name }}</h2>
+<div class="attribute-title">Length:</div> <div class="attribute-value">{{ trail.trail_length }}</div><br>
+<div class="attribute-title">Description:</div> <div class="attribute-value">{{ trail.trail_description }}</div><br>
+<div class="attribute-title">Altitude:</div> <div class="attribute-value">{{ "%d" % trail.trail_high_alt }} ft (high) {{ "%d" % trail.trail_low_alt }} ft (low) {{ "%d" %(trail.trail_high_alt - trail.trail_low_alt) }} ft (delta)</div><br>
 <input type="hidden" id="trailheadlat" value="{{ trail.trailhead_latitude }}">
 <input type="hidden" id="trailheadlong" value="{{ trail.trailhead_longitude }}">
 <input type="hidden" id="trailid" value="{{ trail.trail_id }}">

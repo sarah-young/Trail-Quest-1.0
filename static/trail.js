@@ -37,7 +37,7 @@ function initMap2() {
   animation: google.maps.Animation.DROP,
   });
     // TODO: mock input, and then maybe test to see if the input name (i.e. input[j].name ) is in the text
-  html = ('<div class="window-content"><input type="text" id="origin" placeholder="Starting Address"><br><input type="text" id="phonenumber" placeholder="Enter your phone number"><br><button type="button" id="getdirxns" name="'+trailId+'">Text Directions Link to Trailhead</button ></div>');
+  html = ('<div id="window-content"><input type="text" id="origin" placeholder="Starting Address"><br><input type="text" id="phonenumber" placeholder="Enter your phone number"><br><button type="button" id="getdirxns" name="'+trailId+'">Text Directions Link to Trailhead</button ></div>');
   // sent to the backend where a google maps api is called and trail info and a link to dirxns is sent to phone!
 
 
@@ -76,6 +76,13 @@ $(document).on('click', '#trailid-add', function() {
 $(document).on('click', '#getdirxns', function(){
   let lat = document.getElementById('trailheadlat').value
   let lng = document.getElementById('trailheadlong').value
+  let origin = document.getElementById('origin').value
+
+  if (origin === "") {
+    alert("Please enter a valid address.");
+  }
+
+  else {
 
   $.post('/directions', {'trail_id' : this.name,
                          'origin' : document.getElementById('origin').value,
@@ -85,31 +92,9 @@ $(document).on('click', '#getdirxns', function(){
     function(result) {
       console.log(result);
       // showTrek(result);
-    })
-});
+    }) // End of post statement
+    let changeO = document.getElementById("window-content");
+    changeO.innerHTML = "Text sent!";
 
-
-
-function getDirxns() {
-  console.log("getdirxns button working!!!");
-  if (document.getElementById("startingaddress").value === "") {
-    alert("Please enter a valid address.");
-    console.log('In alert function');
-
-  } // end of if statement
-  else {
-    console.log(document.getElementById("startingaddress").value);
-    console.log(document.getElementById("trailhead_coordinates").value);
-    $.post('/dirxns', {'startingaddress' : document.getElementById("startingaddress").value,
-                       'startingcity' : document.getElementById('startingcity').value,
-                       'startingstate': document.getElementById('startingstate').value,
-                       'trailhead_coordinates': document.getElementById("trailhead_coordinates").value,
-                       'trail_name' : document.getElementById("trail_name").value },
-      function(result) {
-      console.log(result);
-    }) //end of post statement
-
-  } //end of else statement
-
-
-} // end of getDirxns function
+  } // End of else statement
+}); // End of function
