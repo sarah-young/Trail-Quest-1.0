@@ -4,8 +4,9 @@ import secrets
 import requests
 import random
 import model
+
 #from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, session
+from flask import Flask, session, jsonify
 
 hp_api_key = secrets.HIKING_PROJECT_API_KEY
 
@@ -225,13 +226,6 @@ def add_trek_to_users_trails(id_of_trail):
 	elif user_treks != None:
 		return "TRAIL ALREADY EXISTS IN DATABASE."
 
-def get_all_user_treks():
-	"""Get all user treks from user_trails table by querying database using
-	session['user_id']
-	"""
-	all_user_treks = model.db.session.query(model.Trek).filter(model.Trek.user_id==session['user_id']).all()
-
-	return all_user_treks
 
 def check_user_treks(id_of_trail):
 	"""Query database to see if user has trails.

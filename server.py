@@ -84,7 +84,9 @@ def user_login():
 	if user:
 		flash('Logged in successfully.')
 		session['user_id'] = user.user_id
+
 		return redirect('/homepage')
+
 
 	else:
 		flash('Please try your login again.')
@@ -173,6 +175,29 @@ def asynchronous_info_load():
  	selected_trails = functions.select_trails(trails_d)
 		# If selected trails == none, send back STRING which triggers different
 		# in JavaScript
+
+	# check each trail in selected trail starting at [-1]
+	# if trail.trail_id == trek.trail_id
+	# append to treks list, remove from trail selected_trails
+	# check each trek in trek list starting @ [-1]
+	# if trek.trail_id == review.trail_id
+	# append to completed_trails_list, remove from trek list
+
+	user_trails = model.db.session.query(model.Trek).filter(model.Trek.user_id==session['user_id']).all()
+	user_reviews = model.db.session.query(model.Review).filter(model.Review.user_id==session['user_id']).all()
+	# TODO: Looks for completed trails and trails in user's database...
+	# TODO: See if you can make this information display on front end...
+	
+
+	# ids_from_reviews = set()
+	# for review in user_reviews:
+	# 	ids_from_reviews.add(review.trail_id)
+	#
+	# ids_from_user_trails = set()
+	# for trek in user_trails:
+	# 	ids_from_user_trails.add(trek.trail_id)
+
+
 	lat, lng = coordinates
 	lat = float(lat)
 	lng = float(lng)
