@@ -148,7 +148,7 @@ def asynchronous_info_load():
 	if coordinates == None:
 		print "!!!LOCATION OR RANGE ERROR!!!"
 		return "FOO"
-		
+
 	trek_length = int(trek_length)
 
 	radius_to_meters = int(radius) * 1609.34
@@ -250,11 +250,16 @@ def show_user_trails():
 			remaining_trails = 0
 
 		merit_list = model.db.session.query(model.Merit).filter(model.Merit.user_id==session['user_id']).all()
-		print merit_list
+
+		merit_set = set()
+		for merit in merit_list:
+			thing = merit.badges.badge_name
+			thing = thing.replace(' ', '-')
+			merit_set.add(thing)
 
 		return render_template('/mytrails.html', remaining_trails=remaining_trails,
 												 completed_trails=completed_trails,
-												 merit_list=merit_list)
+												 merit_list=merit_set)
 	else:
 		flash("Please login to begin your adventure.")
 		return render_template('/welcome.html')

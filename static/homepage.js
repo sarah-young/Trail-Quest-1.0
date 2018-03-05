@@ -47,17 +47,17 @@ function getTrails(evt) {
 				success: function(response) {
 					if (response === "FOO") {
 						console.log('COORDINATES ERROR');
-						let noCoordinates = document.getElementById("map");
+						let noCoordinates = document.getElementById("error-message");
 						noCoordinates.innerHTML = "Hmm, no trails were found. Please check that the location is correct & in the United States."
 					}
 					else if (response === "BAR") {
 						console.log('RANGE OR LOCATION ERROR');
-						let noTrails = document.getElementById("map");
+						let noTrails = document.getElementById("error-message");
 						noTrails.innerHTML = "Hmm, there aren't too many trails in this area. Maybe try a larger radius or different city in the United States?"; // Display the default slider value
 					}
           else if (response === "FIZZ") {
             console.log('MISSING CITY SEARCH ERROR');
-            let noCity = document.getElementById("map");
+            let noCity = document.getElementById("error-message");
             noCity.innerHTML = "Please enter a City & State to begin your search."
           }
 

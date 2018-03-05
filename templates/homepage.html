@@ -4,45 +4,66 @@ Homepage
 {% endblock %}
 
 {% block content %}
+<div class="row">
+	<div class="col-lg-2"></div>
+	<div class="col-lg-8">
+	<div class="selections">
+		<h4>Let's get trekkin'. Fill out the boxes below to start.</h4>
 
-	<h4>Let's get trekkin'. Fill out the boxes below to start.</h4>
-	<form id="trailSelector">
+		<form id="trailSelector">
+			<i><h4>Find trails near...</h4></i>
+			<div class="location-selection">
+				City:
+		    	<input type="text" name="city" id="cityname" required><br><br>
 
-		<i><h4>Find trails near...</h4></i>
-		City:<br>
-	    	<input type="text" name="city" id="cityname" required><br>
+		    State:
+		    	<input type="text" name="state" id="statename" required><br><br>
+			</div> <!-- End of location-selection div  -->
 
-	    State:<br>
-	    	<input type="text" name="state" id="statename" required><br>
+			<div class="filters">
+				Distance from location:<br>
+				<div class="slidecontainer">
+					<input type="range" min="1" max="25" value="5" class="slider" id="radius-selection" name="radius">
+					<span id="radius"></span> miles
+				</div>
+				<br>
+		    Trail length:
+		   	<br>
+			    <div class="slidecontainer">
+		 	 		<input type="range" min="1" max="30" value="15" class="slider" id="trek_length_selection" name="trek_length">
+		 	 		<span id="trek_length"></span> miles
+				</div><br>
 
-	    Distance from location:<br>
-	    <div class="slidecontainer">
-	 	 		<input type="range" min="1" max="25" value="5" class="slider" id="radius-selection" name="radius">
-	 	 		<span id="radius"></span>
-			</div>
+		    Difficulty rating:
+			    <select name="trail_difficulty" id="traildifficulty">
+				  <option value="no-preference">No preference</option>
+				  <option value="easy">Easy</option>
+				  <option value="moderate">Moderate</option>
+				  <option value="difficult">Difficult</option>
+				</select><br><br>
+			</div> <!-- End of filters div  -->
+		</form>
+		<br>
+		<button type="button" id="asynchronousClick">Get trails</button>
 
-	    Trail length:<br>
-	    <i>(in miles)</i><br>
-		    <div class="slidecontainer">
-	 	 		<input type="range" min="1" max="30" value="15" class="slider" id="trek_length_selection" name="trek_length">
-	 	 		<span id="trek_length"></span>
-			</div>
-
-	    Difficulty rating:
-
-		    <select name="trail_difficulty" id="traildifficulty">
-			  <option value="no-preference">No preference</option>
-			  <option value="easy">Easy</option>
-			  <option value="moderate">Moderate</option>
-			  <option value="difficult">Difficult</option>
-			</select><br>
-
-	</form>
+	</div>
 	<br><br>
-	
-	<button type="button" id="asynchronousClick">Show me trails!</button>
+</div>
+	<div class="col-lg-2"></div>
 
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+		<div id="error-message"></div>
+	  </div>
+		<div class="col-lg-3"></div>
+	</div>
+
+ <div class="row">
+ 	<div class="col-lg-12">
 	<div id="map"></div>
+</div>
+</div>
 
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT4L9G5iunkBWCBwqqm6Qdt7-0hG34L6Y">

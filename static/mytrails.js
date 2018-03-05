@@ -1,10 +1,5 @@
-// JS file supporting mytrails!
 
-// Create event listener for marking trail as complete.
-// Send information to backend for processing:
-// > Add to database by modifying current record: http://fellowship.hackbrightacademy.com/materials/f21a/lectures/sql-2/
-// > Process trail badge logic
-
+// Logic for submitting reviews on mytrails pages
 $('.trailcompleted').click(function() {
 
   $.post('/submit_review', {'trail_id' : this.name,
@@ -18,6 +13,7 @@ $('.trailcompleted').click(function() {
     $("#"+trail_id+"-text").hide();
 });
 
+// Logic to remove trail from mytrails page
 $('.removetrail').click(function() {
    console.log('banana');
   $.post('/remove_trail', {'trail_id' : this.name },
@@ -29,14 +25,3 @@ $('.removetrail').click(function() {
     $("#div-"+trail_id).remove();
 
             });
-
-
-
-
-
-
-
-// Set up jquery onClick event on the button that has the name of the trail_id
-// save this.id to a variable
-// append that to "div-" to reference the div by id
-// change the visibility setting on the div

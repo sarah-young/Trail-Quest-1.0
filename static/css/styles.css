@@ -1,7 +1,27 @@
-html {
-	background-color: #BAACBD,
+.selections {
+	align-items: center;
+	text-align: center;
 }
 
+.badge-class {
+		display: inline-block;
+}
+
+#error-message {
+	text-align: center;
+}
+
+.slidecontainer {
+	width : 50%;
+	margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+img.badge-image {
+	height: 4em;
+	width: 4em;
+	display: inline-block;
+}
 
 .navbar navbar-default{
 	height: 25px
@@ -23,7 +43,7 @@ html {
 }
 
  #map {
-   width: 1000px;
+   width: 100%;
    height: 1000px;
    background-color: white;
  }
