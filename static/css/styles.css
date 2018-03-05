@@ -7,6 +7,17 @@
 		display: inline-block;
 }
 
+.trek-details {
+	display: inline-block;
+	width: 45%;
+
+}
+
+.reviewed-trails {
+	display: inline-block;
+	width: 45%;
+}
+
 #error-message {
 	text-align: center;
 }

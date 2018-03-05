@@ -13,6 +13,8 @@ My Trails
     <div class="badge-class" id="{{ merit }}"><img class="badge-image" src="/static/img/{{merit}}.jpg"></div>
   {% endfor %}
 </div>
+<br><br>
+
 {% if remaining_trails != 0 %}
   {% for trail in remaining_trails %}
   <div class="trek-details" id="div-{{ trail.trail_id }}">
@@ -34,12 +36,18 @@ No trails are in your database. Let's <a href="/homepage">add some!</a>
 {% endif %}
 <!-- COMPLETED TRAILS -->
 <h2>Your Completed Trails</h2>
+<br>
 {% if completed_trails != 0 %}
   {% for review in completed_trails %}
   <div class="reviewed-trails">
     Trail name: {{ review.trails.trail_name }}<br>
-    Miles hiked: {{ review.trails.trail_length }} Trail difficulty: {{ review.trails.trail_difficulty }}
+    Miles hiked: {{ "%d" % review.trails.trail_length }} Trail difficulty: {{ review.trails.trail_difficulty }}
+    {% if review.review_text != "" %}
     <div class="review_text">Your Review: {{ review.review_text }}</div>
+    {% else %}
+    <br>
+    {% endif %}
+    <br>
   </div>
   {% else %}
   <div class="reviewed-trails">
