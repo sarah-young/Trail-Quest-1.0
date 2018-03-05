@@ -91,7 +91,7 @@ def user_login():
 		return redirect('/welcome')
 
 
-@app.route('/logout', methods=['POST'])
+@app.route('/logout')#, methods=['POST']
 def user_logout():
 	"""Log users out of trail quest"""
 
