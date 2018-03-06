@@ -288,6 +288,7 @@ def make_google_maps_link():
 	"""Logic for creating Google Maps Directions link <3"""
 
 	trail_name = request.form.get('trail_name')
+	trail_id = request.form.get('trail_id')
 	origin = request.form.get('origin')
 	origin = origin.replace(',','')
 	origin = origin.split()
@@ -298,9 +299,11 @@ def make_google_maps_link():
 	phone_number = request.form.get('phone_number')
 	print 'PHONE NUMBER: ', phone_number
 	print 'DESTINATION: ', destination
+	print 'TRAIL ID', trail_id
 	google_maps_url = "https://www.google.com/maps/dir/" + origin + "/" + destination
 	body = "Trail Quest Google Map Link to " + trail_name + ": " + google_maps_url
 	send_sms.send_message(phone_number, body)
+	functions.add_trek_to_users_trails(trail_id)
 
 	return "User sent link."
 

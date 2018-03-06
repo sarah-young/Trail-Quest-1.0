@@ -69,7 +69,7 @@ def load_badges():
 	print "Completed."
 
 
-def badge_if_applicable(t_id):
+def add_badge_if_applicable(t_id):
 	"""
 	When review is posted, check to see if badge should be added to user page.
 	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))

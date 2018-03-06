@@ -10,7 +10,7 @@ function initMap2() {
   console.log(trailheadLat);
   let trailheadLong = parseFloat(document.getElementById('trailheadlong').value);
   console.log(trailheadLong);
-  let trailId = document.getElementById('trailid')
+  let trailId = (document.getElementById('trailid').value);
   let infoWindow = new google.maps.InfoWindow({
     width: 150
   });
@@ -92,6 +92,7 @@ $(document).on('click', '#getdirxns', function(){
                          'phone_number' : document.getElementById('phonenumber').value,
                          'trail_name' : document.getElementById("trail_name").value},
     function(result) {
+
       console.log(result);
       // showTrek(result);
     }) // End of post statement

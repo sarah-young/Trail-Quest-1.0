@@ -6,12 +6,25 @@ body {
 	height: 100%;
 }
 
+.trail-name {
+	height: 2em;
+	text-emphasis: bold;
+}
+
+
+.trail-description {
+	height : 4em;
+	overflow: hidden;
+}
+
 #your-trails-title {
+
+	display :inline-block;
 
 }
 
 .badges {
-
+		display: inline-block;
 		height: 4em;
 }
 .navbar-brand {
