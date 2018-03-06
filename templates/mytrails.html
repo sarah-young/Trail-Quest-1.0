@@ -8,32 +8,43 @@ My Trails
 <!-- UNFINISHED TRAILS -->
 
 <h2>Your Trails</h2> <br>
-<div class="badges">
-  {% for merit in merit_list %}
-    <div class="badge-class" id="{{ merit }}"><img class="badge-image" title="{{ merit | replace("-"," ") | title }}" src="/static/img/{{merit}}.jpg"></div>
-  {% endfor %}
-</div>
-
-
-{% if remaining_trails != 0 %}
-  {% for trail in remaining_trails %}
-  <div class="trek-details" id="div-{{ trail.trail_id }}">
-    Trail name: {{ trail.trail_name }} <a href="/trail/{{ trail.trail_id }}">Link</a><br>
-    Trail length: {{ trail.trail_length }}<br>
-    Trail Description: {{ trail.trail_description }}<br>
-    Completed the trail? Add your notes and mark as completed.<br>
-    <textarea placeholder="Add some notes about your hike." rows=‘50’ cols=‘100’ id="{{ trail.trail_id }}-text"></textarea><br>
-    <button type="button" class="trailcompleted" name="{{ trail.trail_id }}">Mark trail as completed</button>
-    <button type="button" class="removetrail" name="{{ trail.trail_id}}" id="{{ trail.trail_id }}">Remove Trail</button>
-    <br><br>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="badges">
+        {% for merit in merit_list %}
+        <div class="badge-class" id="{{ merit }}">
+          <img class="badge-image" title="{{ merit | replace("-"," ") | title }}" src="/static/img/{{merit}}.jpg">
+        </div>
+       {% endfor %}
+      </div>
+    </div>
   </div>
-  {% endfor %}
-{% else %}
-<div id="trek-details">
-No trails are in your database. Let's <a href="/homepage">add some!</a>
+
+<!-- USER'S TRAILS -->
+<div class="row">
+  <div class ="col-lg-12">
+    <div class = "remaining-trails">
+      {% if remaining_trails != 0 %}
+      {% for trail in remaining_trails %}
+        <div class="trek-details" id="div-{{ trail.trail_id }}">
+          Trail name: {{ trail.trail_name }} <a href="/trail/{{ trail.trail_id }}">Link</a><br>
+          Trail length: {{ trail.trail_length }}<br>
+          Trail Description: {{ trail.trail_description }}<br>
+          Completed the trail? Add your notes and mark as completed.<br>
+          <textarea placeholder="Add some notes about your hike." rows=‘50’ cols=‘100’ id="{{ trail.trail_id }}-text"></textarea><br>
+          <button type="button" class="trailcompleted" name="{{ trail.trail_id }}">Mark trail as completed</button>
+          <button type="button" class="removetrail" name="{{ trail.trail_id}}" id="{{ trail.trail_id }}">Remove Trail</button>
+          <br><br>
+        </div>
+      {% endfor %}
+      {% else %}
+      No trails are in your database. Let's <a href="/homepage">add some!</a>
+      {% endif %}
+    </div>
+  </div>
 </div>
 
-{% endif %}
+
 <!-- COMPLETED TRAILS -->
 <h2>Your Completed Trails</h2>
 <br>

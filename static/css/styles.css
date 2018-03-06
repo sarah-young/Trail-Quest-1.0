@@ -6,7 +6,10 @@ body {
 	height: 100%;
 }
 
+.badges {
 
+		height: 4em;
+}
 .navbar-brand {
 	font: helvetica;
 }
@@ -30,6 +33,8 @@ body {
 .trek-details {
 	display: inline-block;
 	width: 45%;
+	vertical-align: text-top;
+
 
 }
 
@@ -67,6 +72,10 @@ img.badge-image {
 	display: inline-block;
 }
 
+#trail-details {
+	margin: 5px;
+}
+
 #trek {
 	width: 500px;
 	height: 500px;
@@ -75,17 +84,19 @@ img.badge-image {
 
 img#trail-picture {
 	height: auto;
+	max-height: 450px;
+	object-fit: cover;
 	width: 100%;
-	margin: 10px;
+	margin: 5px;
 	display: inline-block;
 
 }
 
 #trailheadmap {
-	height: 450px;
+	height: 600px;
 	width:100%;
 	background-color: white;
-	margin: 10px;
+	margin: 5px;
 	display: inline-block;
 }
 
