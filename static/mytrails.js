@@ -10,6 +10,7 @@ $('.trailcompleted').click(function() {
     let trail_id = this.name;
     $("#div-"+trail_id).removeClass("trek-details");
     $("#div-"+trail_id).addClass("review-trails");
+
     $("#"+trail_id+"-text").hide();
 });
 

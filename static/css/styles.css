@@ -6,6 +6,10 @@ body {
 	height: 100%;
 }
 
+#your-trails-title {
+
+}
+
 .badges {
 
 		height: 4em;
@@ -30,17 +34,27 @@ body {
 		display: inline-block;
 }
 
-.trek-details {
+.trek-buttons {
+	width: 100%;
 	display: inline-block;
-	width: 45%;
-	vertical-align: text-top;
+	vertical-align: text-bottom;
+}
 
+.trek-details {
+
+	width: 45%;
+	height: 90%;
+	vertical-align: text-top;
+	padding: 10px;
+	margin: 5px;
+	display: inline-block;
 
 }
 
 .reviewed-trails {
 	display: inline-block;
 	width: 45%;
+	vertical-align: text-top;
 }
 
 #error-message {
@@ -74,12 +88,6 @@ img.badge-image {
 
 #trail-details {
 	margin: 5px;
-}
-
-#trek {
-	width: 500px;
-	height: 500px;
-	background-color: green;
 }
 
 img#trail-picture {

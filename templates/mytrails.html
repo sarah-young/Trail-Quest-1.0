@@ -6,8 +6,16 @@ My Trails
 
 {% block content %}
 <!-- UNFINISHED TRAILS -->
+<div class="row">
+  <div class="col-lg-12">
+    <div id="your-trails-title">
+      <br>
+    <h2>Your Trails</h2>
+    <br>
+    </div>
+  </div>
+</div>
 
-<h2>Your Trails</h2> <br>
   <div class="row">
     <div class="col-lg-12">
       <div class="badges">
@@ -19,7 +27,6 @@ My Trails
       </div>
     </div>
   </div>
-
 <!-- USER'S TRAILS -->
 <div class="row">
   <div class ="col-lg-12">
@@ -30,11 +37,12 @@ My Trails
           Trail name: {{ trail.trail_name }} <a href="/trail/{{ trail.trail_id }}">Link</a><br>
           Trail length: {{ trail.trail_length }}<br>
           Trail Description: {{ trail.trail_description }}<br>
-          Completed the trail? Add your notes and mark as completed.<br>
-          <textarea placeholder="Add some notes about your hike." rows=‘50’ cols=‘100’ id="{{ trail.trail_id }}-text"></textarea><br>
-          <button type="button" class="trailcompleted" name="{{ trail.trail_id }}">Mark trail as completed</button>
-          <button type="button" class="removetrail" name="{{ trail.trail_id}}" id="{{ trail.trail_id }}">Remove Trail</button>
-          <br><br>
+          <div class="trek-buttons">
+            Completed the trail? Add your notes and mark as completed.<br>
+            <textarea placeholder="Add some notes about your hike." rows=‘50’ cols=‘100’ id="{{ trail.trail_id }}-text"></textarea><br>
+            <button type="button" class="trailcompleted" name="{{ trail.trail_id }}">Mark trail as completed</button>
+            <button type="button" class="removetrail" name="{{ trail.trail_id}}" id="{{ trail.trail_id }}">Remove Trail</button>
+          </div>
         </div>
       {% endfor %}
       {% else %}
