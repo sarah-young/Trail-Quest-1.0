@@ -110,8 +110,9 @@ img#trail-picture {
 
  #map {
    height: 1000px;
-	 width: 1000px;
+	 width: auto;
    background-color: white;
+	 align-items: center;
  }
 
 #message {
