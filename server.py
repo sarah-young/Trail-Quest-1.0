@@ -278,7 +278,7 @@ def show_trail_info(trail_id):
 			else:
 				in_my_trails = [" "]
 	else:
-		in_my_trails = False
+		in_my_trails = [" "]
 
 	return render_template('/trail.html', trail=trail, in_my_trails = in_my_trails)
 
