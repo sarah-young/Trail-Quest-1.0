@@ -16,7 +16,7 @@ function initMap2() {
   });
   let html;
   let location = {lat: trailheadLat, lng: trailheadLong};
-  let map = new google.maps.Map(document.getElementById('map'), {
+  let map = new google.maps.Map(document.getElementById('trailheadmap'), {
     zoom: 20,
     center: location,
     mapTypeId: 'satellite'

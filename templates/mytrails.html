@@ -10,7 +10,7 @@ My Trails
 <h2>Your Trails</h2> <br>
 <div class="badges">
   {% for merit in merit_list %}
-    <div class="badge-class" id="{{ merit }}"><img class="badge-image" src="/static/img/{{merit}}.jpg"></div>
+    <div class="badge-class" id="{{ merit }}"><img class="badge-image" title="{{ merit | replace("-"," ") | title }}" src="/static/img/{{merit}}.jpg"></div>
   {% endfor %}
 </div>
 

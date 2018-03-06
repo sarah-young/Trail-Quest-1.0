@@ -5,7 +5,7 @@ Trail Details
 {% block content %}
 
 <div class="row">
-<div class="col-lg-6">
+<div class="col-lg-12">
 <div id="trail-details">
 <h2>{{ trail.trail_name }}</h2>
 <div class="attribute-title">Length:</div> <div class="attribute-value">{{ trail.trail_length }}</div><br>
@@ -16,23 +16,23 @@ Trail Details
 <input type="hidden" id="trailid" value="{{ trail.trail_id }}">
 <input type="hidden" id="trail_name" value="{{ trail.trail_name }}">
 </div>
-<br><br>
+</div>
 <div id="add-to-trails-button">
   {% for thing in in_my_trails %}
   <button type="button" id="trailid-add" name="add-to-my-trails">Add to My Trails</button>
   {% endfor %}
+
 </div>
+</div> <!-- End of first row  -->
+<br><br>
+<div class="row">
+<div class="col-lg-6">
+<img id="trail-picture" src="{{ trail.trail_picture }}">
 </div>
-<div class="col-lg-5">
-<div id="trail-picture">
-<img src="{{ trail.trail_picture }}">
+  <div class="col-lg-6">
+    <div id="trailheadmap"></div>
+  </div><!-- End of second row  -->
 </div>
-</div>
-<div class="col-lg-1">
-</div>
-</div>
-<!-- End of row -->
-<div id="map"></div>
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT4L9G5iunkBWCBwqqm6Qdt7-0hG34L6Y">

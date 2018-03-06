@@ -69,7 +69,7 @@ def load_badges():
 	print "Completed."
 
 
-def add_badge_if_applicable(t_id):
+def badge_if_applicable(t_id):
 	"""
 	When review is posted, check to see if badge should be added to user page.
 	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
@@ -92,6 +92,15 @@ def add_badge_if_applicable(t_id):
 						  				  badge_id = 1)
 			model.db.session.add(waterfall_merit)
 			print 'waterfall'
+
+	if 'marmot' in trail.trail_description or 'marmots' in trail.trail_description:
+		b_id = 15
+		badge_ownership_check = model.db.session.query(model.Merit).filter(model.Merit.badge_id==b_id, model.Merit.user_id==session['user_id']).first()
+		if badge_ownership_check == None:
+			marmot_merit = model.Merit(user_id = session['user_id'],
+						  badge_id = 15)
+			model.db.session.add(marmot_merit)
+
 
 	if 'creek' in trail.trail_description:
 		b_id = 2
@@ -132,7 +141,6 @@ def add_badge_if_applicable(t_id):
 			redwood_merit = model.Merit(user_id = session['user_id'],
 						  badge_id = 6)
 			model.db.session.add(redwood_merit)
-			print "***REDWOOD BADGE ACQUIRED!***"
 
 	if "fern" in trail.trail_description:
 		b_id = 7
