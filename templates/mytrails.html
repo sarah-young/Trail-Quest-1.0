@@ -29,13 +29,11 @@ My Trails
       {% for trail in remaining_trails %}
         <div class = "trail-to-do">
         <div class="trek-details" id="div-{{ trail.trail_id }}">
-          <div class="trail-name">{{ trail.trail_name }} <a href="/trail/{{ trail.trail_id }}">Link</a><br></div>
-          <div class="trail-description">Trail Description: {{ trail.trail_description }}</div>
-          Trail length: {{ trail.trail_length }} miles<br>
+          <div class="trail-name">{{ trail.trail_name }} <a href="/trail/{{ trail.trail_id }}">Trail Info</a></div>
           <div class="trek-buttons">
             Completed the trail? Add your notes and mark as completed.<br>
-            <textarea placeholder="Add some notes about your hike." rows='5' cols='50' id="{{ trail.trail_id }}-text"></textarea><br>
-            <button type="button" class="trailcompleted" name="{{ trail.trail_id }}">Mark trail as completed</button>
+            <textarea rows='5' cols='50' id="{{ trail.trail_id }}-text"></textarea><br>
+            <button type="button" class="trailcompleted" name="{{ trail.trail_id }}" id="completed-{{ trail.trail_id }}">Mark trail as completed</button>
             <button type="button" class="removetrail" name="{{ trail.trail_id}}" id="{{ trail.trail_id }}">Remove Trail</button>
           </div>
         </div>
@@ -58,13 +56,14 @@ My Trails
   {% for review in completed_trails %}
   <div class="reviewed-trails">
     <div class="done-trek-details">
-    {{ review.trails.trail_name }} <a href="/trail/{{ review.trails.trail_id }}">Link</a><br>
+
+    {{ review.trails.trail_name }} <a href="/trail/{{ review.trails.trail_id }}">Trail Info</a><br>
     Miles hiked: {{ "%d" % review.trails.trail_length }} Trail difficulty: {{ review.trails.trail_difficulty }}
     {% if review.review_text != "" %}
     <br>
     <div class="dropdown"><div class="review_text"><span><img class="badge-image" src="../static/img/notebook.svg"></span><div class="dropdown-content">{{ review.review_text }}</div></div></div>
     {% else %}
-    <br>
+
     {% endif %}
     <br>
   </div>

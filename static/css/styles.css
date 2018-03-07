@@ -8,6 +8,11 @@ select {
 	margin: 5px;
 }
 
+
+.review-div {
+	display: inline-block;
+}
+
 ::-webkit-input-placeholder {
    text-align: center;
 }
@@ -39,7 +44,7 @@ select {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    min-width: 350px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
@@ -49,6 +54,9 @@ select {
     display: block;
 }
 
+.diff-dropdown {
+	color: black;
+}
 
 a {
 	font-family: Apple_Chancery;
@@ -66,23 +74,31 @@ textarea {
 	padding: 5px;
 }
 
+.btn-1 {
+	align-items: center;
+}
+
 button {
-	background-color: #A9AFD1;
+	background-color: #837569;
 	color: white;
 	border-radius: 5px;
 	padding: 10px;
 	font-family: Apple_Chancery;
 	margin: 5px;
+	border-color: #837569;
+
 }
 
 
 .trail-to-do {
-	background-color: #ecdcf2;
+	background-color: #8499B1;
 	width: 45%;
 	display: inline-block;
 	margin: 2.5px;
 	padding: 2.5px;
 	border-radius: 15px;
+	color: #493B2A;
+	text-emphasis: bold;
 }
 
 
@@ -116,6 +132,11 @@ button {
 .selections {
 	align-items: center;
 	text-align: center;
+	background-color: #8499B1;
+	color: white;
+	margin: 2.5px;
+	padding: 2.5px;
+	border-radius: 15px;
 }
 
 .two-trees {
@@ -165,11 +186,13 @@ button {
 	margin: 2.5px;
 	padding: 2.5px;
 	height: 9em;
+	color: black;
 
 }
 
 #error-message {
 	text-align: center;
+	width: 100%
 }
 
 .slidecontainer {
