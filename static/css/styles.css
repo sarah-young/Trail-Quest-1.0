@@ -126,6 +126,10 @@ button {
 }
 .navbar-brand {
 	font-family: Apple_Chancery;
+  color: #8499B1!important;
+  font-size: 4em;
+  margin: 5px;
+
 }
 
 
