@@ -14,16 +14,14 @@ Homepage
 	<div class="col-lg-8">
 	<div class="selections">
 		<br><br><br>
-		<h4>Let's get trekkin'. Fill out the boxes below to start.</h4>
+		<div class="random-headers"><h3>Let's get trekkin'. Fill out the boxes below to start.</h3></div>
 
 		<form id="trailSelector">
-			<i><h4>Find trails near...</h4></i>
+			<br>
+			<div class="random-headers"><i><h4>Find trails near...</h4></i></div>
 			<div class="location-selection">
-				City:
-		    	<input type="text" name="city" id="cityname" required><br><br>
-
-		    State:
-		    	<input type="text" name="state" id="statename" required><br><br>
+		    	<input type="text" name="city" id="cityname" placeholder="City" required><br><br>
+		    	<input type="text" name="state" id="statename" placeholder="State" required><br><br>
 			</div> <!-- End of location-selection div  -->
 
 			<div class="filters">
@@ -40,7 +38,7 @@ Homepage
 		 	 		<span id="trek_length"></span> miles
 				</div><br>
 
-		    Difficulty rating:
+		    Difficulty rating:<br>
 			    <select name="trail_difficulty" id="traildifficulty">
 				  <option value="no-preference">No preference</option>
 				  <option value="easy">Easy</option>

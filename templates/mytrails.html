@@ -8,7 +8,7 @@ My Trails
 <!-- UNFINISHED TRAILS -->
 <div class="row">
   <div class="col-lg-12">
-    <div id="your-trails-title">
+    <div class="your-trails-title">
       <br>
     <h2>Your Trails</h2>
     </div>
@@ -27,17 +27,19 @@ My Trails
     <div class = "remaining-trails">
       {% if remaining_trails != 0 %}
       {% for trail in remaining_trails %}
+        <div class = "trail-to-do">
         <div class="trek-details" id="div-{{ trail.trail_id }}">
           <div class="trail-name">{{ trail.trail_name }} <a href="/trail/{{ trail.trail_id }}">Link</a><br></div>
           <div class="trail-description">Trail Description: {{ trail.trail_description }}</div>
           Trail length: {{ trail.trail_length }} miles<br>
           <div class="trek-buttons">
             Completed the trail? Add your notes and mark as completed.<br>
-            <textarea placeholder="Add some notes about your hike." rows='5' cols='65' id="{{ trail.trail_id }}-text"></textarea><br>
+            <textarea placeholder="Add some notes about your hike." rows='5' cols='50' id="{{ trail.trail_id }}-text"></textarea><br>
             <button type="button" class="trailcompleted" name="{{ trail.trail_id }}">Mark trail as completed</button>
             <button type="button" class="removetrail" name="{{ trail.trail_id}}" id="{{ trail.trail_id }}">Remove Trail</button>
           </div>
         </div>
+      </div>
       {% endfor %}
       {% else %}
       No trails are in your database. Let's <a href="/homepage">add some!</a>
@@ -48,19 +50,24 @@ My Trails
 
 
 <!-- COMPLETED TRAILS -->
+<div class="your-trails-title">
 <h2>Your Completed Trails</h2>
+</div>
 <br>
 {% if completed_trails != 0 %}
   {% for review in completed_trails %}
   <div class="reviewed-trails">
-    Trail name: {{ review.trails.trail_name }}<a href="/trail/{{ review.trails.trail_id }}">Link</a><br>
+    <div class="done-trek-details">
+    {{ review.trails.trail_name }} <a href="/trail/{{ review.trails.trail_id }}">Link</a><br>
     Miles hiked: {{ "%d" % review.trails.trail_length }} Trail difficulty: {{ review.trails.trail_difficulty }}
     {% if review.review_text != "" %}
-    <div class="review_text">Your Review: {{ review.review_text }}</div>
+    <br>
+    <div class="dropdown"><div class="review_text"><span><img class="badge-image" src="../static/img/notebook.svg"></span><div class="dropdown-content">{{ review.review_text }}</div></div></div>
     {% else %}
     <br>
     {% endif %}
     <br>
+  </div>
   </div>
   {% else %}
   <div class="reviewed-trails">
