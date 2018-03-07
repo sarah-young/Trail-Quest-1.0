@@ -5,7 +5,7 @@ Homepage
 
 {% block content %}
 <div class="row">
-	<br><br>	
+	<br><br>
 	<div class="col-lg-1">
 			<div class="two-trees">
 				<img width=150% src="/static/img/two-trees.png">
@@ -17,7 +17,6 @@ Homepage
 
 
 		<form id="trailSelector">
-			<br>
 			<div class="random-headers"><i><h4>Find trails near...</h4></i></div>
 			<div class="location-selection">
 		    	<input type="text" name="city" id="cityname" placeholder="City" style="text-align:center" required><br><br>
@@ -37,13 +36,13 @@ Homepage
 		 	 		<input type="range" min="1" max="30" value="15" class="slider" id="trek_length_selection" name="trek_length">
 		 	 		<span id="trek_length"></span> miles
 				</div>
-		    <div class="random-headers"><h4>Difficulty rating:</h4></div>
-				<div class="diff-dropdown">
-			    <select name="trail_difficulty" id="traildifficulty">
-				  <option value="no-preference">No preference</option>
-				  <option value="easy">Easy</option>
-				  <option value="moderate">Moderate</option>
-				  <option value="difficult">Difficult</option>
+		    <div class="random-headers" style="display:inline-block"><h4>Difficulty rating:</h4></div>
+				<div class="diff-dropdown" style="text-align:center">
+			    <select name="trail_difficulty" id="traildifficulty" style="background-color:white; text-align:center">
+				  <option value="no-preference" style="background-color:white">No preference</option>
+				  <option value="easy" style="background-color:white">Easy</option>
+				  <option value="moderate" style="background-color:white">Moderate</option>
+				  <option value="difficult" style="background-color:white">Difficult</option>
 				</select>
 			</div>
 		</div> <!-- End of filters div  -->

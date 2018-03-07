@@ -6,8 +6,22 @@
 
 select {
 	margin: 5px;
+  background-color: white;
 }
 
+option {
+  background-color: white;
+}
+
+window-content {
+    align-items: center;
+}
+
+input {
+  color: black;
+  width: auto;
+  align-items: center;
+}
 
 .review-div {
 	display: inline-block;
@@ -132,6 +146,11 @@ button {
 
 }
 
+.navbar-nav>li>a {
+  line-height: 40px;
+
+}
+
 
 .selections {
 	align-items: center;
@@ -212,7 +231,10 @@ img.badge-image {
 }
 
 .navbar navbar-default{
-	height: 25px
+	height: 25px;
+  line-height: 40px;
+  font-size: 3em;
+
 }
 
 .attribute-title {
@@ -239,7 +261,7 @@ img#trail-picture {
 }
 
 #trailheadmap {
-	height: 600px;
+	height: 700px;
 	width:100%;
 	background-color: white;
 	margin: 5px;

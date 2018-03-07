@@ -322,8 +322,8 @@ def submit_trail_review():
 
 
 if __name__ == "__main__":
-	app.debug = True
-	DebugToolbarExtension(app)
+	app.debug = False
+	# DebugToolbarExtension(app)
 	connect_to_db(app)
 	# functions.load_badges()
 	app.run(host='0.0.0.0')

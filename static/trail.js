@@ -37,7 +37,7 @@ function initMap2() {
   animation: google.maps.Animation.DROP,
   });
     // TODO: mock input, and then maybe test to see if the input name (i.e. input[j].name ) is in the text
-  html = ('<div id="window-content"><input type="text" id="origin" placeholder="Starting Address"><br><input type="text" id="phonenumber" placeholder="Enter your phone number"><br><button type="button" id="getdirxns" name="'+trailId+'">Text Directions Link to Trailhead</button ></div>');
+  html = ('<div id="window-content"><input style="align:center" type="text" id="origin" placeholder="Starting Address"><br><input type="text" id="phonenumber" placeholder="Phone Number"><br><button type="button" id="getdirxns" name="'+trailId+'">Text Directions Link to Trailhead</button ></div>');
   // sent to the backend where a google maps api is called and trail info and a link to dirxns is sent to phone!
 
 
