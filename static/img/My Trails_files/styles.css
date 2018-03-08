@@ -1,0 +1,93 @@
+.selections {
+	align-items: center;
+	text-align: center;
+}
+
+.badge-class {
+		display: inline-block;
+}
+
+.trek-details {
+	display: inline-block;
+	width: 45%;
+
+}
+
+.reviewed-trails {
+	display: inline-block;
+	width: 45%;
+}
+
+#error-message {
+	text-align: center;
+}
+
+.slidecontainer {
+	width : 50%;
+	margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+img.badge-image {
+	height: 4em;
+	width: 4em;
+	display: inline-block;
+}
+
+.navbar navbar-default{
+	height: 25px
+}
+
+.attribute-title {
+	display: inline-block;
+	font-weight: bold;
+}
+
+.attribute-value {
+	display: inline-block;
+}
+
+#trek {
+	width: 500px;
+	height: 500px;
+	background-color: green;
+}
+
+ #map {
+   width: 100%;
+   height: 1000px;
+   background-color: white;
+ }
+
+#message {
+     display:none;
+     background: #f1f1f1;
+     color: #000;
+     position: relative;
+     padding: 20px;
+     margin-top: 10px;
+ }
+
+ #message p {
+     padding: 10px 35px;
+     font-size: 14px;
+
+     .valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";

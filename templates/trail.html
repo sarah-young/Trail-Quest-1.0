@@ -12,7 +12,7 @@ Trail Details
   <!-- </div> -->
 <img id="trail-picture" src="{{ trail.trail_picture }}">
 <div id="trail-details">
-  <h2>{{ trail.trail_name }}</h2>
+  <h2 style="font-family:Apple_Chancery;">{{ trail.trail_name }}</h2>
   <div class="attribute-title">Length:</div> <div class="attribute-value">{{ trail.trail_length }}</div><br>
   <div class="attribute-title">Description:</div> <div class="attribute-value">{{ trail.trail_description }}</div><br>
   <div class="attribute-title">Altitude:</div> <div class="attribute-value">{{ "%d" % trail.trail_high_alt }} ft (high) {{ "%d" % trail.trail_low_alt }} ft (low) {{ "%d" %(trail.trail_high_alt - trail.trail_low_alt) }} ft (delta)</div><br>

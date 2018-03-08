@@ -1,6 +1,15 @@
 @font-face {
   font-family: 'Apple_Chancery';
-  src: url('../font/Apple_Chancery.ttf') format('ttf'),
+  src: url('../font/Apple_Chancery.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'CooperHewitt-Medium';
+  src: url('../font/CooperHewitt-Medium.otf') format('opentype');
+}
+
+h2 {
+  font-family: Apple_Chancery;
 
 }
 
@@ -44,7 +53,7 @@ input {
 }
 
 .random-headers {
-		font-family: Apple_Chancery;
+		font-family: Apple_Chancery !important;
 }
 
 
@@ -73,7 +82,7 @@ input {
 }
 
 a {
-	font-family: Apple_Chancery;
+
 }
 
 html {

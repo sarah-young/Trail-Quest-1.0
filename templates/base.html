@@ -26,13 +26,16 @@
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 <ul class="nav navbar-nav">
-<li class="inactive" style="font-size:1.5em"><a href="/mytrails">My Trails   <img src="../static/img/two-animal-pawprints.svg" height="40px"><span class="sr-only"></span></a></li>
+<li class="inactive" style="font-size:1.5em;font-family:Apple_Chancery"><a href="/mytrails">My Trails  <img src="../static/img/two-animal-pawprints.svg" height="40px"><span class="sr-only"></span></a></li>
 </ul>
-
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav">
+<li class="inactive" style="font-size:1.5em;font-family:Apple_Chancery"><a href="/mytrails">Badges<span class="sr-only"></span></a></li>
+</ul>
 <ul class="nav navbar-nav navbar-right">
   <ul class="nav navbar-nav">
   {% if session['user_id'] %}
-  <li class="inactive" style="font-size:1.5em"><a href='/logout'>Logout<span class="sr-only"></span></a></li>
+  <li class="inactive" style="font-size:1.5em;font-family:Apple_Chancery"><a href='/logout'>Logout<span class="sr-only"></span></a></li>
   {% endif %}
 </ul>
 </div><!-- /.navbar-collapse -->
@@ -55,12 +58,12 @@
 <br>
 <br>
 
-<div class="panel panel-default">
+<!-- <div class="panel panel-default">
   <div class="panel-body">
     <footer>
     Trail Quest - Sarah Young
     </footer>
-  </div>
+  </div> -->
 
 </body>
 
