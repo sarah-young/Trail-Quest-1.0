@@ -30,7 +30,11 @@ Clone the repo into while in your directory.
 Create Your Environment (2)
 
 Check out [Virtualenv](https://virtualenv.pypa.io/en/stable/)
+To set up your environment: (step 1; do this once)
 `virtualenv env`
+
+To open your environment: (step 2; do this when you start up a new terminal session)
+`source env/bin/activate`
 
 Pip Install (3)
 If you've already downloaded Python 2 or 3, you have pip installed on your computer.
