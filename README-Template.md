@@ -6,7 +6,7 @@ Trail Quest takes the analysis paralysis out of selecting your next hike. Using 
 
 Trail Quest uses Python for the back-end server on a Flask template and interacts with a PostgreSQL database. The homepage passes serialized data to the backend via an AJAX request. The Google Maps API takes the requested city/state and creates a lat/long coordinate for use by the Hiking Project API. The Hiking Project API then returns all the trails within the distance range specified by the user. All the returned trails are added to the database. The trail list is parsed by python functions that filter for distance and trail difficulty and the resulting trail objects are presented on a dynamic Google Map with info windows that present more information and a click through link to see pictures from the trail. Users can send trail head directions to their phone via the Twilio API.
 
-The postgreSQL database allows for users to add trails to their database to save for later. When trails are completed, users are assigned badges for the type of trail they went on, sights they may have seen, and the number of hikes they've logged. 
+The postgreSQL database allows for users to add trails to their database to save for later. When trails are completed, users are assigned badges for the type of trail they went on, sights they may have seen, and the number of hikes they've logged.
 
 Selenium is used for end-to-end testing with a current coverage of [  ]%
 
@@ -14,42 +14,43 @@ Selenium is used for end-to-end testing with a current coverage of [  ]%
 
 A requirements.txt file is included within the GitHub repository to make installation a breeze.
 
-Technical savvy in Python, JavaScript, pip installation, and 
+Technical savvy in Python, JavaScript, pip installation, and Selenium is encouraged before collaborating.
 
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
 
-Git Clone! <1>
-
-```
-Go to [GitHub](https://github.com/sarah-young/Trail-Quest-1.0 "Trail Quest GitHub Repo")
+Git Clone! (1)
+Go to [GitHub](https://github.com/sarah-young/Trail-Quest-1.0/)
 Clone the repo.
-[[[ INSERT SCREENSHOTS ]]]
+![GitHub Clone](/readme-files/01-gitclone]
 
+`git clone https://github.com/sarah-young/Trail-Quest-1.0/`
 
-<!-- KEEP GOING FROM HERE -->
-```
+Create Your Environment (2)
 
-And repeat
+Check out [Virtualenv](https://virtualenv.pypa.io/en/stable/)
+`virtualenv env`
 
-```
-until finished
-```
+Pip Install (3)
+If you've already downloaded Python 2 or 3, you have pip installed on your computer.
+`pip install -r requirements.txt`
 
-End with an example of getting some data out of the system or using it for a little demo
+Running Trail Quest (4)
+`python server.py`
+
+A Quick Demo (5)
+Check out a quick feature demo on [YouTube](https://youtu.be/mXeGiV-I-nM)
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Tests are run using Selenium.
 
 ### Break down into end to end tests
 
 Explain what these tests test and why
 
-```
-Give an example
-```
+`Give an example`
 
 ### And coding style tests
 
@@ -65,17 +66,11 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
@@ -92,4 +87,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
-
