@@ -45,10 +45,8 @@ Running Trail Quest (4)
 
 A Quick Demo (5)
 
-<a href="https://youtu.be/mXeGiV-I-nM"><img src="/static/img/youtubescreenshot.jpg"
+<a href="https://youtu.be/mXeGiV-I-nM"><img src="/readme-files/youtubescreenshot.jpg"
 alt="Trail Quest Demo" width="240" height="180" border="10"/></a>
-
-Check out a quick feature demo on [YouTube](https://youtu.be/mXeGiV-I-nM)
 
 ## Running the tests
 
