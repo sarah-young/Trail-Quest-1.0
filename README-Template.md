@@ -20,14 +20,14 @@ Technical savvy in Python, JavaScript, pip installation, and Selenium is encoura
 
 A step by step series of examples that tell you have to get a development env running
 
-Git Clone! (1)
+#### Git Clone! (1)
 Go to [GitHub](https://github.com/sarah-young/Trail-Quest-1.0/)
 Clone the repo into while in your directory.
 ![GitHub Clone](/readme-files/01-gitclone]
 
 `git clone https://github.com/sarah-young/Trail-Quest-1.0/`
 
-Create Your Environment (2)
+#### Create Your Environment (2)
 
 Check out [Virtualenv](https://virtualenv.pypa.io/en/stable/)
 To set up your environment: (step 1; do this once)
@@ -36,14 +36,14 @@ To set up your environment: (step 1; do this once)
 To open your environment: (step 2; do this when you start up a new terminal session)
 `source env/bin/activate`
 
-Pip Install (3)
+#### Pip Install (3)
 If you've already downloaded Python 2 or 3, you have pip installed on your computer.
 `pip install -r requirements.txt`
 
-Running Trail Quest (4)
+#### Running Trail Quest (4)
 `python server.py`
 
-A Quick Demo (5)
+#### A Quick Demo (5)
 
 <a href="https://youtu.be/mXeGiV-I-nM"><img src="/readme-files/youtubescreenshot.jpg"
 alt="Trail Quest Demo" width="240" height="180" border="10"/></a>
