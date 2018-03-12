@@ -8,6 +8,15 @@
   src: url('../font/CooperHewitt-Medium.otf') format('opentype');
 }
 
+.login-page {
+  background-color: #8499B1;
+  color: white;
+  margin: 2.5px;
+	padding: 5px;
+	border-radius: 15px;
+}
+
+
 h2 {
   font-family: Apple_Chancery;
 
@@ -222,7 +231,7 @@ button {
 
 }
 
-#error-message {
+.error-message {
 	text-align: center;
 	width: 100%
 }

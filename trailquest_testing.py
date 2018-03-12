@@ -9,7 +9,6 @@ desired_cap = {
  'os_version': '10.3'
 }
 
-
 driver = webdriver.Chrome()
 driver.get("localhost:5000/welcome")
 assert "Welcome" in driver.title

@@ -49,7 +49,7 @@
 
 <ul>
 {% for message in get_flashed_messages() %}
-<p>{{ message }}</p>
+<div class="error-message" class="alert alert-info" role="alert">{{ message }}</div>
 {% endfor %}
 </ul>
 
