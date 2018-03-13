@@ -12,7 +12,7 @@
   background-color: #8499B1;
   color: white;
   margin: 2.5px;
-	padding: 5px;
+	padding: 10px;
 	border-radius: 15px;
 }
 
@@ -103,7 +103,9 @@ body {
 }
 
 textarea {
-	padding: 5px;
+	padding: 10px;
+  margin: 5px;
+
 }
 
 .btn-1 {
@@ -230,6 +232,24 @@ button {
 	color: black;
 
 }
+
+img.badge-page-img {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+}
+
+
+.badge-details {
+  display: inline-block;
+  background-color: #B8DBD9;
+  border-radius: 15px;
+  margin: 5px;
+  padding: 5px;
+  height: 100px;
+  width: 100%;
+}
+
 
 .error-message {
 	text-align: center;

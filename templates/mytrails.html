@@ -7,7 +7,7 @@ My Trails
 {% block content %}
 <!-- UNFINISHED TRAILS -->
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
     <div class="your-trails-title">
       <br>
     <h2>Your Trails</h2>
@@ -15,7 +15,7 @@ My Trails
       <div class="badges">
         {% for merit in merit_list %}
         <div class="badge-class" id="{{ merit }}">
-          <img class="badge-image" title="{{ merit | replace("-"," ") | title }}" src="/static/img/{{merit}}.jpg">
+          <img class="badge-image" title="{{ merit | replace("-"," ") | title }}" src="/static/img/{{ merit }}.jpg">
         </div>
        {% endfor %}
       </div>
@@ -23,7 +23,7 @@ My Trails
   </div>
 <!-- USER'S TRAILS -->
 <div class="row">
-  <div class ="col-lg-12">
+  <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
     <div class = "remaining-trails">
       {% if remaining_trails != 0 %}
       {% for trail in remaining_trails %}

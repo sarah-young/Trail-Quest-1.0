@@ -14,7 +14,18 @@ hp_api_key = secrets.HIKING_PROJECT_API_KEY
 def find_badges():
 	"""Find badges assigned to user"""
 
-	
+	all_user_badges = model.db.session.query(model.Merit).filter(model.Merit.user_id==session['user_id']).all()
+
+	merit_set = set(all_user_badges)
+
+	merit_list = list(merit_set)
+
+	badge_merit = []
+	for merit in merit_list:
+		badge = model.db.session.query(model.Badge).filter(model.Badge.badge_name==merit.badges.badge_name).first()
+		badge_merit.append(badge)
+
+	return badge_merit
 
 def find_uncompleted_trails():
 	"""Find completed trails"""

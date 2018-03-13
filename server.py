@@ -244,6 +244,7 @@ def show_user_trails():
 
 	Stars will show up when user has marked trails as completed.
 	"""
+
 	if session.get('user_id'):
 		remaining_trails, completed_trails = functions.find_uncompleted_trails()
 		if len(remaining_trails) == 0:
@@ -286,6 +287,7 @@ def show_trail_info(trail_id):
 def make_google_maps_link():
 	"""Logic for creating Google Maps Directions link <3"""
 
+
 	trail_name = request.form.get('trail_name')
 	trail_id = request.form.get('trail_id')
 	origin = request.form.get('origin')
@@ -319,11 +321,17 @@ def submit_trail_review():
 
 	return "Success"
 
-@app.route('/badges', methods=['POST'])
+@app.route('/badges')
 def get_user_badges():
 	"""Get a list of all badges that a user has earned"""
 
-	
+	if session.get('user_id'):
+		badge_list = functions.find_badges()
+		return render_template('badges.html', badge_list = badge_list)
+
+	else:
+		flash("Please login to begin your adventure.")
+		return render_template('/welcome.html')
 
 if __name__ == "__main__":
 	app.debug = False

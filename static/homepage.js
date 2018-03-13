@@ -38,6 +38,7 @@ function getTrek(evt) {
 
 
 function getTrails(evt) {
+
       console.log($('#trailSelector').serialize());
 			$.ajax({
 				url: "/trails_asychronous",
