@@ -282,7 +282,6 @@ def show_trail_info(trail_id):
 
 	return render_template('/trail.html', trail=trail, in_my_trails = in_my_trails)
 
-
 @app.route('/directions', methods=['POST'])
 def make_google_maps_link():
 	"""Logic for creating Google Maps Directions link <3"""
@@ -320,6 +319,11 @@ def submit_trail_review():
 
 	return "Success"
 
+@app.route('/badges', methods=['POST'])
+def get_user_badges():
+	"""Get a list of all badges that a user has earned"""
+
+	
 
 if __name__ == "__main__":
 	app.debug = False

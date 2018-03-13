@@ -48,27 +48,27 @@ function getTrails(evt) {
 					if (response === "FOO") {
             $("#map").hide();
 						console.log('COORDINATES ERROR');
-						let noCoordinates = document.getElementById("error-message");
+						let noCoordinates = document.getElementById("error-feedback");
 						noCoordinates.innerHTML = "Hmm, no trails were found.<br>Please check that the location is correct & in the United States."
-            $("#error-message").addClass("alert alert-info");
+            $(".error-message").addClass("alert alert-info");
           }
 					else if (response === "BAR") {
             $("#map").hide();
 						console.log('RANGE OR LOCATION ERROR');
-						let noTrails = document.getElementById("error-message");
+						let noTrails = document.getElementById("error-feedback");
 						noTrails.innerHTML = "Hmm, there aren't too many trails in this area.<br>Maybe try a larger radius or different city in the United States?"; // Display the default slider value
-            $("#error-message").addClass("alert alert-info");
+            $(".error-message").addClass("alert alert-info");
           }
           else if (response === "FIZZ") {
             $("#map").hide();
             console.log('MISSING CITY SEARCH ERROR');
-            let noCity = document.getElementById("error-message");
+            let noCity = document.getElementById("error-feedback");
             noCity.innerHTML = "Please enter a City & State to begin your search."
-            $("#error-message").addClass("alert alert-info");
+            $(".error-message").addClass("alert alert-info");
           }
 
 					else {
-            $("#error-message").hide();
+            $(".error-message").hide();
 						initMap(response);
 					}
 					// Calling initMap function to display Google Map

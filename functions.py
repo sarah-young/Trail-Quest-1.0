@@ -5,12 +5,16 @@ import requests
 import random
 import model
 
-#from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, session, jsonify
 
 hp_api_key = secrets.HIKING_PROJECT_API_KEY
 
 #db = SQLAlchemy()
+
+def find_badges():
+	"""Find badges assigned to user"""
+
+	
 
 def find_uncompleted_trails():
 	"""Find completed trails"""
