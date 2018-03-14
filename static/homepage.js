@@ -47,6 +47,7 @@ function getTrails(evt) {
 				processData: false,
 				success: function(response) {
 					if (response === "FOO") {
+            $(".error-message").show();
             $("#map").hide();
 						console.log('COORDINATES ERROR');
 						let noCoordinates = document.getElementById("error-feedback");
@@ -54,6 +55,7 @@ function getTrails(evt) {
             $(".error-message").addClass("alert alert-info");
           }
 					else if (response === "BAR") {
+            $(".error-message").show();
             $("#map").hide();
 						console.log('RANGE OR LOCATION ERROR');
 						let noTrails = document.getElementById("error-feedback");
@@ -61,6 +63,7 @@ function getTrails(evt) {
             $(".error-message").addClass("alert alert-info");
           }
           else if (response === "FIZZ") {
+            $(".error-message").show();
             $("#map").hide();
             console.log('MISSING CITY SEARCH ERROR');
             let noCity = document.getElementById("error-feedback");
@@ -70,6 +73,7 @@ function getTrails(evt) {
 
 					else {
             $(".error-message").hide();
+            $("#map").show();
 						initMap(response);
 					}
 					// Calling initMap function to display Google Map

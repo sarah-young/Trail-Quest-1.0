@@ -5,7 +5,7 @@ Welcome
 
 {% block content %}
 <div class="row">
-<div class="col-lg-6">
+<div class="col-lg-6 col-xs-10 col-sm-10 col-md-10">
 
 <div class="login-page">
 <div class="random-headers"><h3>Register for Trail Quest </h3></div>
@@ -16,7 +16,9 @@ Welcome
   Password: <input type="password" placeholder="Password" name="password"
   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
   title="Must contain at least one number and one uppercase and lowercase letter,
-  and at least 8 or more characters" id="password" required>
+  and at least 8 or more characters" id="password" required><br>
+  <i>Password must contain at least one number and one uppercase and lowercase letter,
+  and at least 8 or more characters</i><br>
   <br>
   <button type="submit" name="register" id="register" value="register">Register</button>
 </form>
