@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Badges
+{% endblock %}
+{% block content %}
+<div class="random-headers"><h2>Badges</h2></div><br><br>
+{% if badge_list > 0 %}
+{% for badge in badge_list %}
+<div class="row">
+<div class="badge-section">
+<div class="col-lg-1 col-xs-1 col-sm-1 col-md-1"><img class="badge-page-img" title="{{ badge.badge_name | title }}" src="/static/img/{{ badge.badge_name | replace(" ","-") }}.jpg"></div>
+<div class="col-lg-11 col-xs-11 col-sm-11 col-md-11"><div class="badge-details"> <strong>{{badge.badge_name | title}}</strong> <br> {{ badge.badge_description}}</div>
+</div>
+</div>
+</div>
+{% endfor %}
+{% else %}
+<div class="no-badges">
+  You haven't earned any badges. <a href="/mytrails">Complete some trails</a> to earn merit.
+</div>
+{% endif %}
+
+
+{% endblock %}
