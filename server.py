@@ -104,6 +104,30 @@ def user_logout():
 
 ########### INNER APP FUNCTIONALITY #######################
 
+@app.route('/seealltrails')
+def show_all_trails():
+	"""Shows all trails in the Trail Quest postgres DB"""
+
+	# query for all trails in the Trail Quest postgres DB :)
+
+	# return render_template('/all_trails.html', all_trails = all_trails)
+
+
+
+@app.route('/mystats')
+def show_user_stats():
+	"""Displays users total miles hiked, altitude change, and number of trails completed"""
+
+	if session.get('user_id'):
+	# check to see if username is in the session --if not, login page!!!
+		# query for total miles
+		# query for total altitude change
+		# query for total trails
+		return render_template('/user_stats.html', total_miles = total_miles, total_alt = total_alt, num_trails = num_trails)
+
+	else:
+		flash("Please login to continue your adventure.")
+		return render_template('/welcome.html')
 
 @app.route('/')
 def display_trail_form():
