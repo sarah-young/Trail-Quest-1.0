@@ -108,10 +108,13 @@ def user_logout():
 def show_all_trails():
 	"""Shows all trails in the Trail Quest postgres DB"""
 
+	if session.get('user_id'):
 	# query for all trails in the Trail Quest postgres DB :)
 
-	# return render_template('/all_trails.html', all_trails = all_trails)
-
+		# return render_template('/all_trails.html', all_trails = all_trails)
+	else:
+		flash("Please login to continue your adventure.")
+		return render_template('/welcome.html')
 
 
 @app.route('/mystats')
@@ -128,6 +131,7 @@ def show_user_stats():
 	else:
 		flash("Please login to continue your adventure.")
 		return render_template('/welcome.html')
+
 
 @app.route('/')
 def display_trail_form():
