@@ -4,6 +4,7 @@ import secrets
 import requests
 import random
 import model
+import password_hashing
 
 from flask import Flask, session, jsonify
 
@@ -354,8 +355,7 @@ def check_user_credentials(username, password):
 	user = model.db.session.query(model.User).filter(model.User.user_name==username).first()
 
 	if user:
-		if user.user_password == password:
-			print "BLUEBERRIES!!!!"
+		if password_hashing.
 			return user
 		else:
 			return False

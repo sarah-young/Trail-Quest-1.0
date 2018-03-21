@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, jsonify
 import secrets
-import functions
+import functions, password_hashing
 from flask import Flask, redirect, request, render_template, session, url_for, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
@@ -56,7 +56,8 @@ def register_user():
 	username = request.form.get("username")
 	password = request.form.get("password")
 
-	a_new_user = functions.add_user_to_database(username, password)
+	hashed_password = password_hashing.password_hashing(password)
+	a_new_user = functions.add_user_to_database(username, hashed_password)
 
 	if a_new_user:
 
@@ -86,7 +87,6 @@ def user_login():
 		session['user_id'] = user.user_id
 
 		return redirect('/homepage')
-
 
 	else:
 		flash('Please try your login again.')
