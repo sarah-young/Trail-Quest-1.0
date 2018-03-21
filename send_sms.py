@@ -14,6 +14,9 @@ auth_token  = twilio_auth_token
 client = Client(account_sid, auth_token)
 
 def send_message(phone_number, message):
+    """Take in message text and forward to the phone number passed to the
+    function"""
+
     message = client.messages.create(
         to=phone_number,
         from_=twilio_number,
