@@ -48,6 +48,7 @@ class User(db.Model):
 	user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	user_name = db.Column(db.String(50), nullable=False)
 	user_password = db.Column(db.String(50), nullable=False)
+	user_salt = db.Column(db.String(100), nullable=False)
 
 	reviews = db.relationship('Review')
 	trek = db.relationship('Trek')
@@ -55,7 +56,6 @@ class User(db.Model):
 
 	def __repr__(self):
 		return "<User id: %s User name: %s >" % (self.user_id, self.user_name)
-
 
 class Review(db.Model):
 	"""Reviews made by users"""
