@@ -6,7 +6,6 @@ from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 import send_sms
 import twilio
-
 from model import connect_to_db
 import model
 
@@ -56,8 +55,9 @@ def register_user():
 	username = request.form.get("username")
 	password = request.form.get("password")
 
-	hashed_password = password_hashing.password_hashing(password)
-	a_new_user = functions.add_user_to_database(username, hashed_password)
+	gimme_hashed_password = password_hashing.password_hashing(password)
+	print "HASHED PASSWORD", gimme_hashed_password
+	a_new_user = functions.add_user_to_database(username, gimme_hashed_password)
 
 	if a_new_user:
 
@@ -104,17 +104,17 @@ def user_logout():
 
 ########### INNER APP FUNCTIONALITY #######################
 
-@app.route('/seealltrails')
-def show_all_trails():
-	"""Shows all trails in the Trail Quest postgres DB"""
-
-	if session.get('user_id'):
-	# query for all trails in the Trail Quest postgres DB :)
-
-		# return render_template('/all_trails.html', all_trails = all_trails)
-	else:
-		flash("Please login to continue your adventure.")
-		return render_template('/welcome.html')
+# @app.route('/seealltrails')
+# def show_all_trails():
+# 	"""Shows all trails in the Trail Quest postgres DB"""
+#
+# 	if session.get('user_id'):
+# 	# query for all trails in the Trail Quest postgres DB :)
+#
+# 		# return render_template('/all_trails.html', all_trails = all_trails)
+# 	else:
+# 		flash("Please login to continue your adventure.")
+# 		return render_template('/welcome.html')
 
 
 @app.route('/mystats')
@@ -363,7 +363,7 @@ def get_user_badges():
 
 if __name__ == "__main__":
 	app.debug = False
-	# DebugToolbarExtension(app)
+	DebugToolbarExtension(app)
 	connect_to_db(app)
-	# functions.load_badges()
+	#functions.load_badges()
 	app.run(host='0.0.0.0')

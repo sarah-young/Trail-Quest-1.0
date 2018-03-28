@@ -47,8 +47,7 @@ class User(db.Model):
 
 	user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	user_name = db.Column(db.String(50), nullable=False)
-	user_password = db.Column(db.String(50), nullable=False)
-	user_salt = db.Column(db.String(100), nullable=False)
+	user_password = db.Column(db.String(500), nullable=False)
 
 	reviews = db.relationship('Review')
 	trek = db.relationship('Trek')
@@ -99,7 +98,7 @@ class Badge(db.Model):
 
 	__tablename__ = "badges"
 
-	badge_id = db.Column(db.Integer, primary_key=True)
+	badge_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
 	badge_name = db.Column(db.String(50))
 	badge_description = db.Column(db.UnicodeText)
 
@@ -107,7 +106,6 @@ class Badge(db.Model):
 
 	def __repr__(self):
 		return "< Badge id: %s Badge name: %s >" % (self.badge_id, self.badge_name)
-
 
 class Merit(db.Model):
 	"""All the types of badges that have been assigned and which user they have been assigned to"""

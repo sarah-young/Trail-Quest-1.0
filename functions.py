@@ -72,7 +72,7 @@ def load_badges():
 	    badge_name, badge_description = row.split(",")
 
 	    badge = model.Badge(badge_name=badge_name,
-	                badge_description=badge_description)
+	                		badge_description=badge_description)
 
 	    # We need to add to the session or it won't ever be stored
 	    model.db.session.add(badge)
@@ -308,8 +308,10 @@ def add_user_to_database(username, password):
 	"""Check to see if user is in database. If they aren't add them."""
 
 	user_name_check = model.db.session.query(model.User).filter(model.User.user_name==username).first()
-
+	print user_name_check
 	if user_name_check == None:
+		print username
+		print password
 		user = model.User(user_name = username,
 					  user_password = password)
 		model.db.session.add(user)
@@ -355,7 +357,7 @@ def check_user_credentials(username, password):
 	user = model.db.session.query(model.User).filter(model.User.user_name==username).first()
 
 	if user:
-		if password_hashing.
+		if password_hashing.hashed_password_check(username, password):
 			return user
 		else:
 			return False
