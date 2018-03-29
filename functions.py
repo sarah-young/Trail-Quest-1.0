@@ -1,11 +1,7 @@
 """Functions for Trail Quest"""
 
-import secrets
-import requests
-import random
-import model
-import password_hashing
-
+import secrets, model, password_hashing
+import requests, random
 from flask import Flask, session, jsonify
 
 hp_api_key = secrets.HIKING_PROJECT_API_KEY
@@ -20,6 +16,7 @@ def find_badges():
 	merit_set = set(all_user_badges)
 
 	merit_list = list(merit_set)
+	# TODO: See if I can consolidate the information above
 
 	badge_merit = []
 	for merit in merit_list:
@@ -28,13 +25,10 @@ def find_badges():
 
 	return badge_merit
 
+
 def find_uncompleted_trails():
 	"""Find completed trails"""
 
-	print "**IN UNCOMPLETED TRAILS FUNC***"
-	# SET MATH
-	# use session to get user_id
-	# query to find all user's trails
 	all_users_trails = model.db.session.query(model.Trek).filter(model.Trek.user_id==session['user_id']).all()
 	# guery to find all user's reviews
 	all_users_reviews = model.db.session.query(model.Review).filter(model.Review.user_id==session['user_id']).all()
@@ -239,7 +233,6 @@ def add_trek_to_users_trails(id_of_trail):
 	user_treks = check_user_treks(id_of_trail)
 	print "PRINT USER TREKS: ", user_treks
 	if user_treks == None:
-		print "HERE - NONE"
 
 		trek = model.Trek(user_id = session['user_id'],
 					  	trail_id = id_of_trail)
@@ -252,9 +245,7 @@ def add_trek_to_users_trails(id_of_trail):
 
 
 def check_user_treks(id_of_trail):
-	"""Query database to see if user has trails.
-
-	"""
+	"""Query database to see if user has trails."""
 	user_treks = model.db.session.query(model.Trek).filter(model.Trek.user_id==session['user_id'], model.Trek.trail_id==id_of_trail).first()
 	# see if a trek that matches the user_id from the session AND the trail_id argument is in the database
 
@@ -266,9 +257,7 @@ def check_user_treks(id_of_trail):
 
 def extract_relevant_trail_info(trail_object):
 	"""Extract relevant trail info from trail object for use in
-	map on front end
-
-	"""
+	map on front end."""
 
 	trail = trail_object
 
@@ -350,10 +339,8 @@ def find_lat_lng(city, state):
 		return None
 
 def check_user_credentials(username, password):
-	"""
-	Compare user entered credentials to credentials in database!
+	"""Compare user entered credentials to credentials in database."""
 
-	"""
 	user = model.db.session.query(model.User).filter(model.User.user_name==username).first()
 
 	if user:
@@ -364,12 +351,11 @@ def check_user_credentials(username, password):
 	else:
 		return False
 
-def find_trails(coordinates, radius='25'):
+
+def find_trails(coordinates, radius='10'):
 	"""Find trails based on GPS coordinates from find_lat_lng
 
-	Uses Hiking Project API
-
-	"""
+	Uses Hiking Project API"""
 
 	lat, lng = coordinates
 	# Unpacking coordinates from Google Maps API
@@ -383,13 +369,9 @@ def find_trails(coordinates, radius='25'):
 
 
 def select_trails(trails):
-	"""Selects three random trails from trail_packet from find_trails
-
-	"""
+	"""Selects three random trails from trail_packet from find_trails"""
 
 	print "***PRINT TRAIL TYPE*** ", type(trails)
-
-
 
 	if len(trails) == 0:
 		return None
