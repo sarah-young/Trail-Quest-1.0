@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request, session, jsonify
 import secrets
-import functions, password_hashing
+import functions, password_hashing, model, send_sms
+# .py files
 from flask import Flask, redirect, request, render_template, session, url_for, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
-import send_sms
 import twilio
 from model import connect_to_db
-import model
 
 app = Flask(__name__)
 
