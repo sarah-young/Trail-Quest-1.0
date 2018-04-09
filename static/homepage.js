@@ -44,12 +44,12 @@ function getTrails(evt) {
             $(".error-message").hide();
             $("#map").show();
 						initMap(response);
-					} // Calling initMap function to display Google Map
-				}, // end of response function
+					}, // Calling initMap function to display Google Map
+				 // end of response function
 			  error: function(error) {
 					console.log(error);
-			  }; // end of error handling function
-      )}; // end of AJAX deets section
+			  } // end of error handling function
+      }); // end of AJAX deets section
 
 
 
