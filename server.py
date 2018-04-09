@@ -172,8 +172,7 @@ def asynchronous_info_load():
 
 	if coordinates == None:
 		print "!!!LOCATION OR RANGE ERROR!!!"
-		return "FOO"
-		# TODO: REFACTOR
+		return "!!!LOCATION OR RANGE ERROR!!!", 400
 
 	trek_length = int(trek_length)
 
@@ -183,7 +182,7 @@ def asynchronous_info_load():
 	if len(trails) == 0:
 
 		print "!!!LOCATION OR RANGE ERROR!!! NO TRAILS"
-		return "BAR"
+		return "!!!LOCATION OR RANGE ERROR!!! NO TRAILS", 400
 		# TODO: REFACTOR
 
 	trails_to_db = functions.add_trails_to_db(trails)

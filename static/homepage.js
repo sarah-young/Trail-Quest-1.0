@@ -1,11 +1,7 @@
-// <span id="trek_length"></span>
-// <span id="radius"></span>
-
 let slider1 = document.getElementById("radius-selection");
 let output1 = document.getElementById("radius");
 output1.innerHTML = slider1.value; // Display the default slider value
 
-// Update the current slider value (each time you drag the slider handle)
 slider1.oninput = function() {
     output1.innerHTML = this.value;
 } //end of slider value <span> number for radius slidecontainer
@@ -32,7 +28,6 @@ function getTrek(evt) {
   console.log($('#chosentrek').data('trailId'));
   $.post('/trek', {'chosentrail' : $('#chosentrek').data('trailId')}, function(result) {
       console.log(result);
-
     })
 } //end of getTrek function
 
@@ -46,44 +41,15 @@ function getTrails(evt) {
 				data: $('#trailSelector').serialize(),
 				processData: false,
 				success: function(response) {
-					if (response === "FOO") {
-            $(".error-message").show();
-            $("#map").hide();
-						console.log('COORDINATES ERROR');
-						let noCoordinates = document.getElementById("error-feedback");
-						noCoordinates.innerHTML = "Hmm, no trails were found.<br>Please check that the location is correct & in the United States."
-            $(".error-message").addClass("alert alert-info");
-          }
-					else if (response === "BAR") {
-            $(".error-message").show();
-            $("#map").hide();
-						console.log('RANGE OR LOCATION ERROR');
-						let noTrails = document.getElementById("error-feedback");
-						noTrails.innerHTML = "Hmm, there aren't too many trails in this area.<br>Maybe try a larger radius or different city in the United States?"; // Display the default slider value
-            $(".error-message").addClass("alert alert-info");
-          }
-          else if (response === "FIZZ") {
-            $(".error-message").show();
-            $("#map").hide();
-            console.log('MISSING CITY SEARCH ERROR');
-            let noCity = document.getElementById("error-feedback");
-            noCity.innerHTML = "Please enter a City & State to begin your search."
-            $(".error-message").addClass("alert alert-info");
-          }
-
-					else {
             $(".error-message").hide();
             $("#map").show();
 						initMap(response);
-					}
-					// Calling initMap function to display Google Map
+					} // Calling initMap function to display Google Map
 				}, // end of response function
-
 			  error: function(error) {
 					console.log(error);
-			  } // end of error handling function
-			 }); // end of AJAX deets section
-		}; //end of function getTrails
+			  }; // end of error handling function
+      )}; // end of AJAX deets section
 
 
 
