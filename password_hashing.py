@@ -2,6 +2,8 @@ import bcrypt
 import model
 from flask import session
 
+# salt = bcrypt.gensalt() # do I need this...?
+
 def password_hashing(password):
     """Bcrypt password hashing"""
 

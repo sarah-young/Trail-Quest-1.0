@@ -1,16 +1,34 @@
-from flask import Flask, render_template, request, session, jsonify, redirect, url_for, flash
-import functions, password_hashing, model, send_sms, secrets
+from flask import Flask, render_template, request, session, jsonify
+import secrets
+import functions, password_hashing, model, send_sms
 # .py files
-from model import connect_to_db
+from flask import Flask, redirect, request, render_template, session, url_for, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 import twilio
+from model import connect_to_db
 
 app = Flask(__name__)
 
 app.secret_key = "SECRETSECRETSECRET"
 
 ########### USER LOGIN & REGISTER LOGIC #######################
+
+@app.route('/remove_trail', methods =['POST'])
+def trail_removal_route():
+	"""
+	SQLAlchemy query allowing user to remove trail from their trail list.
+	"""
+	t_id = request.form.get('trail_id')
+	trail_to_remove = model.Trek.query.filter_by(user_id=session['user_id'], trail_id=t_id).delete()
+	model.db.session.commit()
+	# Trek is the table holding user trails.
+	# Finding correct trek object via user_id in session & trail_id passed from the front end.
+	# TODO: Add button to front end to remove trails.
+	# TODO: Add similar route for removing reviews?
+
+	return "Success"
+
 
 @app.route('/welcome')
 def show_registration_page():
@@ -125,22 +143,6 @@ def display_trail_form():
 		flash("Please login to begin your adventure.")
 		return render_template('/welcome.html')
 
-
-@app.route('/remove_trail', methods =['POST'])
-def trail_removal_route():
-	"""SQLAlchemy query allowing user to remove trail from their trail list."""
-
-	t_id = request.form.get('trail_id')
-	trail_to_remove = model.Trek.query.filter_by(user_id=session['user_id'], trail_id=t_id).delete()
-	model.db.session.commit()
-	# Trek is the table holding user trails.
-	# Finding correct trek object via user_id in session & trail_id passed from the front end.
-	# TODO: Add button to front end to remove trails.
-	# TODO: Add similar route for removing reviews?
-
-	return "Success"
-
-
 @app.route('/homepage')
 def render_homepage():
 
@@ -172,9 +174,16 @@ def asynchronous_info_load():
 
 	if coordinates == None:
 		print "!!!LOCATION OR RANGE ERROR!!!"
+<<<<<<< HEAD
 		return "!!!LOCATION OR RANGE ERROR!!!", 400
+=======
+		return "FOO"
+>>>>>>> parent of 5b92dd7... Cleaned up some code
 
 	trek_length = int(trek_length)
+
+	radius_to_meters = int(radius) * 1609.34
+
 
 	trails = functions.find_trails(coordinates, radius)
 	# ***Hiking API gets called here!***
@@ -182,8 +191,12 @@ def asynchronous_info_load():
 	if len(trails) == 0:
 
 		print "!!!LOCATION OR RANGE ERROR!!! NO TRAILS"
+<<<<<<< HEAD
 		return "!!!LOCATION OR RANGE ERROR!!! NO TRAILS", 400
 		# TODO: REFACTOR
+=======
+		return "BAR"
+>>>>>>> parent of 5b92dd7... Cleaned up some code
 
 	trails_to_db = functions.add_trails_to_db(trails)
 	# Adds all trails from hiking project API to database
@@ -211,6 +224,7 @@ def asynchronous_info_load():
 	user_reviews = model.db.session.query(model.Review).filter(model.Review.user_id==session['user_id']).all()
 	# TODO: Looks for completed trails and trails in user's database...
 	# TODO: See if you can make this information display on front end...
+
 
 	# ids_from_reviews = set()
 	# for review in user_reviews:
@@ -246,9 +260,14 @@ def get_trail_id():
 	"""
 	trail_id = request.form.get('chosentrail')
 	trek_add = functions.add_trek_to_users_trails(trail_id)
+	print "TREK ADD RESULT: ",trek_add
+	# trail_conditions = functions.get_trail_conditions(trail_id)
+	# print trail_conditions
 	trail_object = functions.get_trail_object_by_id(trail_id)
 	trail_details = functions.extract_relevant_trail_info(trail_object)
+
 	trail_deets = [trail_details]
+	print "TRAIL DEETS: ", trail_deets
 
 	return jsonify(trail_deets)
 
@@ -257,8 +276,10 @@ def get_trail_id():
 def show_user_trails():
 	"""Show user trails on mytrails.html page.
 
-	Trails will show up as points on a map."""
-	#TODO: Stars will show up when user has marked trails as completed.
+	Trails will show up as points on a map.
+
+	Stars will show up when user has marked trails as completed.
+	"""
 
 	if session.get('user_id'):
 		remaining_trails, completed_trails = functions.find_uncompleted_trails()
