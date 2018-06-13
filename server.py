@@ -174,14 +174,11 @@ def asynchronous_info_load():
 
 	if coordinates == None:
 		print "!!!LOCATION OR RANGE ERROR!!!"
-<<<<<<< HEAD
+
 		return "!!!LOCATION OR RANGE ERROR!!!", 400
-=======
+
 		return "FOO"
-<<<<<<< HEAD
->>>>>>> parent of 5b92dd7... Cleaned up some code
-=======
->>>>>>> parent of 5b92dd7... Cleaned up some code
+
 
 	trek_length = int(trek_length)
 
@@ -194,16 +191,7 @@ def asynchronous_info_load():
 	if len(trails) == 0:
 
 		print "!!!LOCATION OR RANGE ERROR!!! NO TRAILS"
-<<<<<<< HEAD
-<<<<<<< HEAD
 		return "!!!LOCATION OR RANGE ERROR!!! NO TRAILS", 400
-		# TODO: REFACTOR
-=======
-		return "BAR"
->>>>>>> parent of 5b92dd7... Cleaned up some code
-=======
-		return "BAR"
->>>>>>> parent of 5b92dd7... Cleaned up some code
 
 	trails_to_db = functions.add_trails_to_db(trails)
 	# Adds all trails from hiking project API to database
