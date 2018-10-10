@@ -50,6 +50,8 @@ function getTrails(evt) {
 					console.log(error);
 			  } // end of error handling function
       }); // end of AJAX deets section
+    }
+
 
 
 
@@ -117,5 +119,5 @@ function bindInfoWindow(trailMarker, map, infoWindow, html) {
             infoWindow.close();
             infoWindow.setContent(html);
             infoWindow.open(map, trailMarker);
-        });
+        })
 } //end of bindInfoWindow function

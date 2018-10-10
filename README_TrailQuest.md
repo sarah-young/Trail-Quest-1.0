@@ -42,7 +42,8 @@ If you've already downloaded Python 2 or 3, you have pip installed on your compu
 `pip install -r requirements.txt`
 
 #### Create Your Database! (4)
-"Instructions for creating and connecting to psql database"
+Create your database with the terminal command `createdb trailquest`.
+Next enter `python model.py`. This creates your database.
 
 #### Running Trail Quest (5)
 `python server.py`
