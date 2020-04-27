@@ -25,7 +25,7 @@ PyJWT==1.6.4
 pyOpenSSL==18.0.0
 pytz==2018.5
 pyxdg==0.25
-requests==2.19.1
+requests==2.20.0
 SecretStorage==2.3.1
 six==1.11.0
 SQLAlchemy==1.2.12
